@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppMainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"/>
+
+    <com.yinglan.alphatabs.AlphaTabsIndicator
+        android:id="@+id/bottomTab"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp"
+            app:tabText="待办"
+            app:tabIconNormal="@drawable/list"
+            app:tabIconSelected="@drawable/list_selected"
+            app:tabTextSize="12sp"
+            app:textColorNormal="@color/grey"
+            app:textColorSelected="@color/blue"/>
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:id="@+id/data"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp"
+            app:tabText="数据分析"
+            app:tabIconNormal="@drawable/data"
+            app:tabIconSelected="@drawable/data_selected"
+            app:tabTextSize="12sp"
+            app:textColorNormal="@color/grey"
+            app:textColorSelected="@color/blue"/>
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:id="@+id/discover"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp"
+            app:tabText="朋友圈"
+            app:tabIconNormal="@drawable/discover"
+            app:tabIconSelected="@drawable/discover_selected"
+            app:tabTextSize="12sp"
+            app:textColorNormal="@color/grey"
+            app:textColorSelected="@color/blue"/>
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:id="@+id/me"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp"
+            app:tabText="我的"
+            app:tabIconNormal="@drawable/me"
+            app:tabIconSelected="@drawable/me_selected"
+            app:tabTextSize="12sp"
+            app:textColorNormal="@color/grey"
+            app:textColorSelected="@color/blue"/>
+
+
+
+    </com.yinglan.alphatabs.AlphaTabsIndicator>
+
+
+</LinearLayout>
