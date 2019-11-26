@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText password;
     private Button login;
     private TextView register;
+    private int[] imagesId={R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang};
+    private	String[] names={"短毛猫","猴子","兔子","老鼠"};
+    private  String[] contents={"可爱","顽皮","温顺","伶俐"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,19 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void loginFun(){
-        if(username.getText().toString().equals("")){
-            Toast.makeText(MainActivity.this,"账号不能为空", Toast.LENGTH_SHORT).show();
-        }
-        else if(password.getText().toString().equals("")){
-            Toast.makeText(MainActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
-        }
-        else if(!username.getText().toString().equals("admin") || !password.getText().toString().equals("123456")){
-            Toast.makeText(MainActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
-        }
-        else{
+
             Intent intent = new Intent(MainActivity.this, AppMainActivity.class);
             startActivity(intent);
-        }
+
     }
 
     private void registerFun(){

@@ -10,9 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 
 import com.github.ksoichiro.android.observablescrollview.ObservableListView;
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
@@ -25,10 +32,14 @@ import java.util.List;
 
 public class AppMainActivity extends AppCompatActivity {
 
+    private ListView lv1;
     private AlphaTabsIndicator bottomTab;
     private ViewPager viewPager;
     private View listView, dataView, discoverView, meView;
     private List<View> views = new ArrayList<>();
+    private int[] imagesId={R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang};
+    private	String[] names={"短毛猫","猴子","兔子","老鼠"};
+    private  String[] contents={"可爱","顽皮","温顺","伶俐"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +88,11 @@ public class AppMainActivity extends AppCompatActivity {
             items.add("item" + i);
         }
         listView_1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items));
+
+
+        lv1 =  findViewById(R.id.listView2);
+        MyBaseAdapter mAdapter = new MyBaseAdapter();
+        lv1.setAdapter(mAdapter);
     }
 
     //viewPager的Adapter
@@ -105,5 +121,39 @@ public class AppMainActivity extends AppCompatActivity {
             container.addView(views.get(position));
             return views.get(position);
         }
+    }
+    class MyBaseAdapter extends BaseAdapter {
+        @Override
+        public long getItemId(int position) {
+            // TODO 自动生成的方法存根
+            return position;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            // TODO 自动生成的方法存根
+            return names[position];
+        }
+
+        @Override
+        public int getCount() {
+            // TODO 自动生成的方法存根
+            return names.length;
+        }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // TODO 自动生成的方法存根
+            View layout=View.inflate(AppMainActivity.this, R.layout.listview, null);
+            ImageView face = (ImageView)layout.findViewById(R.id.face);
+            TextView name =(TextView)layout.findViewById(R.id.name);
+            TextView mark = (TextView)layout.findViewById(R.id.mark);
+
+            face.setImageResource(imagesId[position]);
+            name.setText(names[position]);
+            mark.setText(contents[position]);
+
+            return layout;
+        }
+
     }
 }
