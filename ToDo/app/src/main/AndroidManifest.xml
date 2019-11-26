@@ -21,7 +21,7 @@
         <activity android:name=".ListActivity" />
         <activity android:name=".DataActivity" />
         <activity android:name=".DiscoverActivity" />
-        <activity android:name=".MeActivity"></activity>
+        <activity android:name=".MeActivity" />
     </application>
 
 </manifest>

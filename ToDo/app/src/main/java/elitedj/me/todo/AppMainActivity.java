@@ -8,6 +8,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -65,12 +68,9 @@ public class AppMainActivity extends AppCompatActivity {
 
         lv1 =  meView.findViewById(R.id.listView2);
         MyBaseAdapter mAdapter = new MyBaseAdapter();
-<<<<<<< HEAD
         //lv1.setAdapter(mAdapter);
-=======
         lv1.setAdapter(mAdapter);
 
->>>>>>> 6dc8b0a4b593cc32a3c36fd2d3efe72b0432a570
     }
 
     //viewPager的Adapter
