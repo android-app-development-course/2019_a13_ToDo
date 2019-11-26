@@ -1,5 +1,9 @@
 <component name="ProjectCodeStyleConfiguration">
   <code_scheme name="Project" version="173">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9f50b0267a80e235424999eac28c63ea786dbe1e
     <Objective-C-extensions>
       <file>
         <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Import" />
@@ -25,6 +29,10 @@
         <pair source="c" header="h" fileNamingConvention="NONE" />
       </extensions>
     </Objective-C-extensions>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 9f50b0267a80e235424999eac28c63ea786dbe1e
     <codeStyleSettings language="XML">
       <arrangement>
         <rules>
@@ -134,5 +142,6 @@
         </rules>
       </arrangement>
     </codeStyleSettings>
+>>>>>>> 9809dd68136e8c8854121203b8c1b7a9da35ce3d
   </code_scheme>
 </component>
