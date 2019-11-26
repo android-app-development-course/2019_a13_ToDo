@@ -92,7 +92,7 @@ public class AppMainActivity extends AppCompatActivity {
 
         lv1 =  findViewById(R.id.listView2);
         MyBaseAdapter mAdapter = new MyBaseAdapter();
-        lv1.setAdapter(mAdapter);
+        //lv1.setAdapter(mAdapter);
     }
 
     //viewPager的Adapter
