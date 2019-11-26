@@ -1,7 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.github.ksoichiro.android.observablescrollview.ObservableListView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/list_view_1"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</com.github.ksoichiro.android.observablescrollview.ObservableListView>
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/momentbackground"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@color/blue"/>
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/transparent"/>
+
+    <LinearLayout
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/transparent"
+        android:layout_below="@+id/layout1">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_return"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:background="@color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/newedit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_newedit"
+            android:layout_marginRight="10dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/faceandname"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_below="@id/titlebar">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:layout_toLeftOf="@id/face"
+            android:layout_marginTop="90dp"
+            android:layout_marginRight="15dp"
+            android:gravity="right"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            />
+
+        <com.github.siyamed.shapeimageview.RoundedImageView
+            android:id="@+id/face"
+            android:adjustViewBounds="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/touxiang2"
+            app:siRadius="8dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/momentbackground"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/momentlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+    </LinearLayout>
+
+</RelativeLayout>
