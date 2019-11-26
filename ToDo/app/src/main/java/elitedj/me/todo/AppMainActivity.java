@@ -1,5 +1,6 @@
 package elitedj.me.todo;
 
+import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -66,31 +67,7 @@ public class AppMainActivity extends AppCompatActivity {
         viewPager.setAdapter(new pagerAdapter());
         bottomTab.setViewPager(viewPager);
 
-        ObservableListView listView_1 = discoverView.findViewById(R.id.list_view_1);
-        listView_1.setScrollViewCallbacks(new ObservableScrollViewCallbacks() {
-            @Override
-            public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
-
-            }
-
-            @Override
-            public void onDownMotionEvent() {
-
-            }
-
-            @Override
-            public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-
-            }
-        });
-        ArrayList<String> items = new ArrayList<>();
-        for(int i=1;i<=100;i++){
-            items.add("item" + i);
-        }
-        listView_1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items));
-
-
-        lv1 =  findViewById(R.id.listView2);
+        lv1 =  meView.findViewById(R.id.listView2);
         MyBaseAdapter mAdapter = new MyBaseAdapter();
         lv1.setAdapter(mAdapter);
     }
@@ -122,6 +99,8 @@ public class AppMainActivity extends AppCompatActivity {
             return views.get(position);
         }
     }
+
+
     class MyBaseAdapter extends BaseAdapter {
         @Override
         public long getItemId(int position) {
