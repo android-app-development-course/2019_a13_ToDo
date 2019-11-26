@@ -21,10 +21,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.github.ksoichiro.android.observablescrollview.ObservableListView;
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
@@ -70,6 +66,7 @@ public class AppMainActivity extends AppCompatActivity {
         lv1 =  meView.findViewById(R.id.listView2);
         MyBaseAdapter mAdapter = new MyBaseAdapter();
         lv1.setAdapter(mAdapter);
+
     }
 
     //viewPager的Adapter
