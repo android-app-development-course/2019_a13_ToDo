@@ -10,7 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.github.ksoichiro.android.observablescrollview.ObservableListView;
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
+import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
@@ -49,7 +55,28 @@ public class AppMainActivity extends AppCompatActivity {
         viewPager.setAdapter(new pagerAdapter());
         bottomTab.setViewPager(viewPager);
 
+        ObservableListView listView_1 = discoverView.findViewById(R.id.list_view_1);
+        listView_1.setScrollViewCallbacks(new ObservableScrollViewCallbacks() {
+            @Override
+            public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
 
+            }
+
+            @Override
+            public void onDownMotionEvent() {
+
+            }
+
+            @Override
+            public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+
+            }
+        });
+        ArrayList<String> items = new ArrayList<>();
+        for(int i=1;i<=100;i++){
+            items.add("item" + i);
+        }
+        listView_1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items));
     }
 
     //viewPager的Adapter
