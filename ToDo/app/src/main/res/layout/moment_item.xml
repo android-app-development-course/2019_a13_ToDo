@@ -1,8 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.github.siyamed.shapeimageview.RoundedImageView
+            android:id="@+id/face"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/touxiang2"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:siRadius="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/friendname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="cxk"
+                android:maxLines="1"
+                android:textSize="20sp"
+                android:textColor="@color/darkBlue"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="asdgasdgasdgasdgasdgasdgasdgasdg"/>
+
+            <com.varunest.sparkbutton.SparkButton
+                android:id="@+id/like"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:sparkbutton_inActiveImage="@drawable/ic_like"
+                app:sparkbutton_activeImage="@drawable/ic_like_selected"
+                app:sparkbutton_iconSize="20dp"
+                app:sparkbutton_primaryColor="@color/red"
+                app:sparkbutton_secondaryColor="@color/red"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#68666666">
+    </LinearLayout>
 
 </LinearLayout>

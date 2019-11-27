@@ -9,7 +9,7 @@
         android:id="@+id/momentbackground"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:background="@color/blue"/>
+        android:background="@drawable/img2"/>
 
     <LinearLayout
         android:id="@+id/layout1"
@@ -25,19 +25,10 @@
         android:background="@color/transparent"
         android:layout_below="@+id/layout1">
 
-        <ImageButton
-            android:id="@+id/back"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_return"
-            android:layout_marginLeft="10dp"/>
-
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="8"
+            android:layout_weight="9"
             android:background="@color/transparent"/>
 
         <ImageButton

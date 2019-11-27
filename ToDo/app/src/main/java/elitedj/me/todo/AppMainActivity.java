@@ -29,14 +29,18 @@ import com.yinglan.alphatabs.AlphaTabsIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
+import elitedj.me.todo.Adapter.MomentListAdapter;
+
 
 public class AppMainActivity extends AppCompatActivity {
 
     private ListView lv1;
+    private ListView moment_list;
     private AlphaTabsIndicator bottomTab;
     private ViewPager viewPager;
     private View listView, dataView, discoverView, meView;
     private List<View> views = new ArrayList<>();
+    private ArrayList<Moment> moments = new ArrayList<>();
     private int[] imagesId={R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang};
     private	String[] names={"短毛猫","猴子","兔子","老鼠"};
     private  String[] contents={"可爱","顽皮","温顺","伶俐"};
@@ -71,6 +75,17 @@ public class AppMainActivity extends AppCompatActivity {
         //lv1.setAdapter(mAdapter);
         lv1.setAdapter(mAdapter);
 
+        // 朋友圈的列表
+        moment_list = discoverView.findViewById(R.id.momentlist);
+        for(int i=1;i<=5;i++){
+            Moment moment = new Moment();
+            moment.setFace(R.drawable.touxiang2);
+            moment.setName((char)(i+'A')+"");
+            moment.setContent("ajsdfhajklsdghlasdkghasjkldghasjkgadfgdfh");
+            moments.add(moment);
+        }
+        MomentListAdapter momentListAdapter = new MomentListAdapter(moments, getLayoutInflater());
+        moment_list.setAdapter(momentListAdapter);
     }
 
     //viewPager的Adapter
