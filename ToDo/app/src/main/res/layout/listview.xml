@@ -5,10 +5,12 @@
 
     <ImageView
         android:id="@+id/face"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/touxiang" />
 
     <TextView
@@ -16,22 +18,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="57dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="-4dp"
+        android:layout_marginTop="9dp"
         android:layout_toRightOf="@+id/face"
         android:paddingLeft="20dp"
         android:text="TextView"
-        android:textSize="20sp" />
+        android:textColor="#F7000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/mark"
-        android:layout_width="wrap_content"
+        android:layout_width="226dp"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/name"
         android:layout_below="@+id/name"
-        android:layout_marginTop="10dp"
-        android:textSize="15sp"
+        android:layout_alignRight="@+id/name"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="-163dp"
+        android:layout_toRightOf="@+id/face"
         android:text="mark"
-        />
+        android:textAlignment="textStart"
+        android:textColor="#F02B2A2A"
+        android:textSize="12sp" />
 
 </RelativeLayout>
+
