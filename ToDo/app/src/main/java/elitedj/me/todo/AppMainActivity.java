@@ -2,12 +2,19 @@ package elitedj.me.todo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,6 +34,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.siyamed.shapeimageview.RoundedImageView;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
@@ -39,7 +47,7 @@ public class AppMainActivity extends AppCompatActivity {
 
     private ImageView touxiang;
     private ListView lv1;
-    private ListView moment_list;
+    private RecyclerView moment_list;
     private AlphaTabsIndicator bottomTab;
     private ViewPager viewPager;
     private View listView, dataView, discoverView, meView;
@@ -96,21 +104,37 @@ public class AppMainActivity extends AppCompatActivity {
 
     public void discoverViewInit(){
         // 设置朋友圈的titleBar的margin，让它在系统状态栏底部，适配所有手机
-        LinearLayout titleBar = discoverView.findViewById(R.id.titlebar);
-        // RelativeLayout 表示该控件在RelativeLayout里面，其他控件用法类似
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(titleBar.getLayoutParams());
-        lp.setMargins(0,new NativeBarHeight().getNativeBarHeight(AppMainActivity.this),0,0);
+        LinearLayout titleBar = discoverView.findViewById(R.id.linearlayout1);
+        // LinearLayout 表示该控件在LinearLayout里面，其他控件用法类似
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(titleBar.getLayoutParams());
+        lp.setMargins(0,new NativeBarHeight().getNativeBarHeight(AppMainActivity.this)+16,0,0);
         titleBar.setLayoutParams(lp);
+
+        AppBarLayout appBarLayout = discoverView.findViewById(R.id.appBar);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+                RoundedImageView face = discoverView.findViewById(R.id.myFace);
+                CoordinatorLayout bg = discoverView.findViewById(R.id.discoverViewBG);
+                if(Math.abs(i) >= appBarLayout.getTotalScrollRange()) { //折叠
+                    face.setVisibility(View.GONE);
+                } else { //未折叠
+                    bg.setBackgroundColor(getResources().getColor(R.color.white));
+                    face.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         // 朋友圈的列表
         moment_list = discoverView.findViewById(R.id.momentlist);
-        for(int i=1;i<=5;i++){
+        for(int i=1;i<=15;i++){
             Moment moment = new Moment();
-            moment.setFace(R.drawable.touxiang2);
+            moment.setFace(R.drawable.img3);
             moment.setName((char)(i+'A')+"");
             moment.setContent("ajsdfhajklsdghlasdkghasjkldghasjkgadfgdfh");
             moments.add(moment);
         }
+        moment_list.setLayoutManager(new LinearLayoutManager(discoverView.getContext()));
         MomentListAdapter momentListAdapter = new MomentListAdapter(moments, getLayoutInflater());
         moment_list.setAdapter(momentListAdapter);
     }
