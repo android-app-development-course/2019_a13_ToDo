@@ -20,7 +20,9 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".AppMainActivity" />
-        <activity android:name=".ListActivity" />
+        <activity
+            android:name=".TodoList.ListActivity"
+            android:label=""/>
         <activity android:name=".DataActivity" />
         <activity android:name=".DiscoverActivity" />
         <activity android:name=".MeActivity" />

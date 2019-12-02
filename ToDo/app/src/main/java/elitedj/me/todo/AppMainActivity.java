@@ -1,6 +1,6 @@
 package elitedj.me.todo;
 
-import android.content.Context;
+import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -9,19 +9,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -33,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import elitedj.me.todo.Adapter.MomentListAdapter;
+import elitedj.me.todo.TodoList.ListActivity;
 
 
 public class AppMainActivity extends AppCompatActivity {
@@ -45,6 +40,8 @@ public class AppMainActivity extends AppCompatActivity {
     private View listView, dataView, discoverView, meView;
     private List<View> views = new ArrayList<>();
     private ArrayList<Moment> moments = new ArrayList<>();
+    private LocalActivityManager manager;
+    private Intent intentList;
     private int[] imagesId={R.drawable.finish,R.drawable.target,R.drawable.core,R.drawable.fengjing,R.drawable.color,R.drawable.set,R.drawable.help,R.drawable.share};
     private	String[] names={"历史记录时间轴","未来时间表","ToDo核心设置","背景海报图设置","主题颜色","更多外观 | 其他设置","帮助","分享给朋友"};
     private  String[] contents={"已完成计划的记录","重要日期倒计时","铃声震动|休息时长","计时或锁机时的背景海报","自定义主题颜色","卡片背景|主界面背景|语言设置","常见的使用问题和解决方法","如果你觉得好用就分享给你的小伙伴们呗"};
@@ -61,10 +58,17 @@ public class AppMainActivity extends AppCompatActivity {
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
 
+        // 设置LocalActivityManager
+        manager = new LocalActivityManager(this, true);
+        manager.dispatchCreate(savedInstanceState);
+
         bottomTab = findViewById(R.id.bottomTab);
         viewPager = findViewById(R.id.viewPage);
         LayoutInflater inflater = getLayoutInflater();
-        listView = inflater.inflate(R.layout.activity_list, null);
+        // 关联ListActivity
+        intentList = new Intent(AppMainActivity.this, ListActivity.class);
+        listView = manager.startActivity("viewID", intentList).getDecorView();
+        //listView = inflater.inflate(R.layout.activity_list, null);
         dataView = inflater.inflate(R.layout.activity_data, null);
         discoverView = inflater.inflate(R.layout.activity_discover, null);
         meView = inflater.inflate(R.layout.activity_me, null);
@@ -92,6 +96,8 @@ public class AppMainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
     public void discoverViewInit(){
