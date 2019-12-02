@@ -37,5 +37,4 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1'//圆形头像
     implementation 'com.lucasurbas:listitemview:1.1.1'
     implementation 'com.github.varunest:sparkbutton:1.0.6'
-
 }

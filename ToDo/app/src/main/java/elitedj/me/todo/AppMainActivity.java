@@ -18,7 +18,9 @@ import android.view.WindowManager;
 
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import android.widget.BaseAdapter;
@@ -78,17 +80,7 @@ public class AppMainActivity extends AppCompatActivity {
         //lv1.setAdapter(mAdapter);
         lv1.setAdapter(mAdapter);
 
-        // 朋友圈的列表
-        moment_list = discoverView.findViewById(R.id.momentlist);
-        for(int i=1;i<=5;i++){
-            Moment moment = new Moment();
-            moment.setFace(R.drawable.touxiang2);
-            moment.setName((char)(i+'A')+"");
-            moment.setContent("ajsdfhajklsdghlasdkghasjkldghasjkgadfgdfh");
-            moments.add(moment);
-        }
-        MomentListAdapter momentListAdapter = new MomentListAdapter(moments, getLayoutInflater());
-        moment_list.setAdapter(momentListAdapter);
+        discoverViewInit();
 
         //头像按钮
         touxiang = (ImageView) meView.findViewById(R.id.touxiang);
@@ -101,6 +93,27 @@ public class AppMainActivity extends AppCompatActivity {
         });
     }
 
+
+    public void discoverViewInit(){
+        // 设置朋友圈的titleBar的margin，让它在系统状态栏底部，适配所有手机
+        LinearLayout titleBar = discoverView.findViewById(R.id.titlebar);
+        // RelativeLayout 表示该控件在RelativeLayout里面，其他控件用法类似
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(titleBar.getLayoutParams());
+        lp.setMargins(0,new NativeBarHeight().getNativeBarHeight(AppMainActivity.this),0,0);
+        titleBar.setLayoutParams(lp);
+
+        // 朋友圈的列表
+        moment_list = discoverView.findViewById(R.id.momentlist);
+        for(int i=1;i<=5;i++){
+            Moment moment = new Moment();
+            moment.setFace(R.drawable.touxiang2);
+            moment.setName((char)(i+'A')+"");
+            moment.setContent("ajsdfhajklsdghlasdkghasjkldghasjkgadfgdfh");
+            moments.add(moment);
+        }
+        MomentListAdapter momentListAdapter = new MomentListAdapter(moments, getLayoutInflater());
+        moment_list.setAdapter(momentListAdapter);
+    }
 
     //viewPager的Adapter
     private class pagerAdapter extends PagerAdapter
