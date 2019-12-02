@@ -48,15 +48,16 @@
                     app:layout_collapseMode="pin"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/newedit"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:fitsSystemWindows="true"
-                        android:background="@drawable/ic_newedit"
+                        android:src="@drawable/ic_newedit"
                         app:layout_collapseMode="pin"
-                        android:layout_marginRight="16dp"
-                        android:layout_gravity="right"/>
+                        android:layout_marginEnd="16dp"
+                        android:layout_gravity="end"
+                        android:background="@drawable/new_moment_button_item"/>
 
                 </LinearLayout>
 
