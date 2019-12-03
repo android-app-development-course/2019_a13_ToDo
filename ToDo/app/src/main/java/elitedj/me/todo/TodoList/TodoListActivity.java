@@ -96,10 +96,12 @@ public class TodoListActivity extends AppCompatActivity {
         //newTodoView = manager.startActivity("viewID", intentNewTodo).getDecorView();
         //设置视图
         popupWindow.setContentView(showView);
+        // 设置动画
+        popupWindow.setAnimationStyle(R.style.pop_animation);
         //设置窗口的高
-        popupWindow.setHeight(400);
+        popupWindow.setHeight(700);
         //设置窗口的宽
-        popupWindow.setWidth(600);
+        popupWindow.setWidth(800);
         //将窗口外部点击消失
         popupWindow.setOutsideTouchable(true);
         //设置获得焦点

@@ -29,7 +29,9 @@
         <activity android:name=".discover.EditNewMomentActivity" />
         android:name=".TodoList.TodoListActivity"
         android:label="" />
-        <activity android:name=".TodoList.NewTodoActivity"></activity>
+        <activity
+            android:name=".TodoList.NewTodoActivity"
+            android:label="添加代办"></activity>
     </application>
 
 </manifest>
