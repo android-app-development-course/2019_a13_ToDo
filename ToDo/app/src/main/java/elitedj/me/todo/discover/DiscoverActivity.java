@@ -1,5 +1,6 @@
 package elitedj.me.todo.discover;
 
+import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -85,6 +86,7 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void newEditFun(){
-        Toast.makeText(this, "newEdie", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, EditNewMomentActivity.class);
+        startActivity(intent);
     }
 }
