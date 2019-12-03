@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gyf.immersionbar.ImmersionBar;
+import com.lzy.ninegrid.NineGridView;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ import java.util.List;
 import elitedj.me.todo.TodoList.TodoListActivity;
 
 import elitedj.me.todo.discover.DiscoverActivity;
+import elitedj.me.todo.discover.ImageLoader;
 import elitedj.me.todo.me.Myinfo;
 
 public class AppMainActivity extends AppCompatActivity {
@@ -49,6 +51,10 @@ public class AppMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_main);
+
+
+        // 朋友圈九宫格图片的加载器
+        NineGridView.setImageLoader(new ImageLoader());
 
         // 系统透明状态栏
         ImmersionBar.with(this).init();

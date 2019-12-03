@@ -9,10 +9,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.github.siyamed.shapeimageview.RoundedImageView;
+import com.lzy.ninegrid.NineGridView;
 
 import java.util.ArrayList;
 
@@ -67,10 +70,15 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
             moment.setFace(R.drawable.img3);
             moment.setName((char)(i+'A')+"");
             moment.setContent("ajsdfhajklsdghlasdkghasjkldghasjkgadfgdfh");
+            ArrayList<Picture> pictures = new ArrayList<>();
+            for(int j=1;j<=Math.min(i, 9);j++) {
+                pictures.add(new Picture("https://c-ssl.duitang.com/uploads/item/201706/25/20170625143749_mtSZE.thumb.700_0.jpeg"));
+            }
+            moment.setPictures(pictures);
             moments.add(moment);
         }
         momentList.setLayoutManager(new LinearLayoutManager(this));
-        MomentListAdapter momentListAdapter = new MomentListAdapter(moments, getLayoutInflater());
+        MomentListAdapter momentListAdapter = new MomentListAdapter(this, moments, getLayoutInflater());
         momentList.setAdapter(momentListAdapter);
     }
 

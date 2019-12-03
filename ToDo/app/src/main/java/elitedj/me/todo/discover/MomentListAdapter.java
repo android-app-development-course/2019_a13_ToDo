@@ -1,11 +1,15 @@
 package elitedj.me.todo.discover;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.github.siyamed.shapeimageview.RoundedImageView;
+import com.lzy.ninegrid.ImageInfo;
+import com.lzy.ninegrid.NineGridView;
+import com.lzy.ninegrid.preview.NineGridViewClickAdapter;
 import com.varunest.sparkbutton.SparkButton;
 
 import java.util.ArrayList;
@@ -16,9 +20,11 @@ public class MomentListAdapter extends RecyclerView.Adapter<MomentListAdapter.Vi
 
     private ArrayList<Moment> moments;
     private LayoutInflater layoutInflater;
+    private Context context;
 
-    public MomentListAdapter(ArrayList<Moment> moments, LayoutInflater layoutInflater){
+    public MomentListAdapter(Context context, ArrayList<Moment> moments, LayoutInflater layoutInflater){
         super();
+        this.context = context;
         this.moments = moments;
         this.layoutInflater = layoutInflater;
         //Log.e("----------------->", "MomentListAdapter: "+moments.size(), null);
@@ -44,6 +50,16 @@ public class MomentListAdapter extends RecyclerView.Adapter<MomentListAdapter.Vi
         holder.friendname.setText(moment.getName());
         holder.content.setText(moment.getContent());
         holder.like.setChecked(false);
+
+        ArrayList<Picture> pictures = moment.getPictures();
+        ArrayList<ImageInfo> imageInfos = new ArrayList<>();
+        for(Picture p : pictures) {
+            ImageInfo imageInfo = new ImageInfo();
+            imageInfo.setBigImageUrl(p.getUri());
+            imageInfo.setThumbnailUrl(p.getUri());
+            imageInfos.add(imageInfo);
+        }
+        holder.nineGridView.setAdapter(new NineGridViewClickAdapter(context, imageInfos));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -51,6 +67,7 @@ public class MomentListAdapter extends RecyclerView.Adapter<MomentListAdapter.Vi
         private TextView friendname;
         private TextView content;
         private SparkButton like;
+        private NineGridView nineGridView;
 
         public ViewHolder(View view){
             super(view);
@@ -58,6 +75,7 @@ public class MomentListAdapter extends RecyclerView.Adapter<MomentListAdapter.Vi
             friendname = view.findViewById(R.id.friendname);
             content = view.findViewById(R.id.content);
             like = view.findViewById(R.id.like);
+            nineGridView = view.findViewById(R.id.ninePic);
             //Log.e("--->>>", "ViewHolder: "+like.toString(), null);
         }
     }

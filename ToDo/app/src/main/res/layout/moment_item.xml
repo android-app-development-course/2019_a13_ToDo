@@ -46,6 +46,17 @@
                 android:textColor="@color/black"
                 android:text="asdgasdgasdgasdgasdgasdgasdgasdg"/>
 
+            <com.lzy.ninegrid.NineGridView
+                android:id="@+id/ninePic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                app:ngv_maxSize="9"
+                app:ngv_singleImageSize="120dp"
+                app:ngv_singleImageRatio="1"
+                app:ngv_mode="fill"/>
+
             <com.varunest.sparkbutton.SparkButton
                 android:id="@+id/like"
                 android:layout_width="20dp"

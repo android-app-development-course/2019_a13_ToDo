@@ -33,7 +33,7 @@ dependencies {
 
     // 第三方库
     implementation 'com.yinglan.alphatabs:library:1.0.8'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
     implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     implementation 'com.makeramen:roundedimageview:2.2.1'//圆形头像
     implementation 'de.hdodenhof:circleimageview:3.0.1'//圆形头像
@@ -41,4 +41,5 @@ dependencies {
     implementation 'com.github.varunest:sparkbutton:1.0.6'
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     implementation 'me.kareluo.ui:popmenu:1.1.0' // 弹框气泡化菜单的控件
+    implementation 'com.lzy.widget:ninegridview:0.2.0'
 }
