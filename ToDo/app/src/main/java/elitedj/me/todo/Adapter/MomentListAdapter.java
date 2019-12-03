@@ -1,7 +1,6 @@
 package elitedj.me.todo.Adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import com.github.siyamed.shapeimageview.RoundedImageView;
 import com.varunest.sparkbutton.SparkButton;
 
 import java.util.ArrayList;
-import elitedj.me.todo.Moment;
+import elitedj.me.todo.discover.Moment;
 import elitedj.me.todo.R;
 
 public class MomentListAdapter extends RecyclerView.Adapter<MomentListAdapter.ViewHolder> {

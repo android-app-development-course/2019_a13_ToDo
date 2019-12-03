@@ -1,4 +1,4 @@
-package elitedj.me.todo;
+package elitedj.me.todo.discover;
 
 public class Moment {
     private int face;

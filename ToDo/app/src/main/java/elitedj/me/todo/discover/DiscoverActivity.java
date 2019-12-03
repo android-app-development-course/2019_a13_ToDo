@@ -1,4 +1,4 @@
-package elitedj.me.todo.TodoList;
+package elitedj.me.todo.discover;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -17,8 +16,7 @@ import com.github.siyamed.shapeimageview.RoundedImageView;
 import java.util.ArrayList;
 
 import elitedj.me.todo.Adapter.MomentListAdapter;
-import elitedj.me.todo.Moment;
-import elitedj.me.todo.NativeBarHeight;
+import elitedj.me.todo.utils.NativeBarHeight;
 import elitedj.me.todo.R;
 
 public class DiscoverActivity extends AppCompatActivity implements View.OnClickListener{

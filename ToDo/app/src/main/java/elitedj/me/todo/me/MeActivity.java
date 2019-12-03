@@ -1,4 +1,4 @@
-package elitedj.me.todo;
+package elitedj.me.todo.me;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,26 +9,34 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Myinfo extends AppCompatActivity {
+import elitedj.me.todo.R;
+
+
+public  class MeActivity extends AppCompatActivity {
 
     private ListView lv1;
 
-    private int[] imagesId={R.drawable.name,R.drawable.sex,R.drawable.birthday,R.drawable.email,R.drawable.tel,R.drawable.school,R.drawable.exit};
-    private	String[] names={"蔡徐坤","男","1999-07-30","842184122@qq.com","13268453217","SCNU","退出登录"};
-    private  String[] contents={"更改昵称","更改性别","更改生日","更改邮箱","更改电话","更改学校","退出该账号"};
+    private int[] imagesId={R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang};
+    private	String[] names={"短毛猫","猴子","兔子","老鼠"};
+    private  String[] contents={"可爱","顽皮","温顺","伶俐"};
 
+    private String data[] = {"aa","bb","cc","dd","aa","bb","cc","dd","aa","bb","cc","dd","aa","bb","cc","dd"};//假数据
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myinfo);
+        setContentView(R.layout.activity_me);
         lv1 =  findViewById(R.id.listView2);
         MyBaseAdapter mAdapter = new MyBaseAdapter();
         lv1.setAdapter(mAdapter);
 
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(MeActivity.this,android.R.layout.simple_list_item_1,data);//新建并配置ArrayAapeter
+        //lv1.setAdapter(adapter);
+
+
     }
-    class MyBaseAdapter extends BaseAdapter {
+    class MyBaseAdapter extends BaseAdapter{
         @Override
         public long getItemId(int position) {
             // TODO 自动生成的方法存根
@@ -49,7 +57,7 @@ public class Myinfo extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // TODO 自动生成的方法存根
-            View layout=View.inflate(Myinfo.this, R.layout.listview, null);
+            View layout=View.inflate(MeActivity.this, R.layout.listview, null);
             ImageView face = (ImageView)layout.findViewById(R.id.face);
             TextView name =(TextView)layout.findViewById(R.id.name);
             TextView mark = (TextView)layout.findViewById(R.id.mark);
@@ -62,4 +70,5 @@ public class Myinfo extends AppCompatActivity {
         }
 
     }
+
 }

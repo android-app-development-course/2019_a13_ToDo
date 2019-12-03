@@ -1,4 +1,4 @@
-package elitedj.me.todo;
+package elitedj.me.todo.utils;
 
 import android.content.Context;
 import android.content.res.Resources;

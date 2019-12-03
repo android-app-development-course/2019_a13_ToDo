@@ -24,8 +24,9 @@ import com.yinglan.alphatabs.AlphaTabsIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
-import elitedj.me.todo.TodoList.DiscoverActivity;
+import elitedj.me.todo.discover.DiscoverActivity;
 import elitedj.me.todo.TodoList.ListActivity;
+import elitedj.me.todo.me.Myinfo;
 
 
 public class AppMainActivity extends AppCompatActivity {
@@ -67,7 +68,7 @@ public class AppMainActivity extends AppCompatActivity {
         listView = manager.startActivity("viewID", intentList).getDecorView();
         //listView = inflater.inflate(R.layout.activity_list, null);
 
-        dataView = inflater.inflate(R.layout.activity_data, null);
+        dataView = inflater.inflate(R.layout.activity_data_static, null);
 
         // 关联DiscoverActivity
         intentDiscover = new Intent(AppMainActivity.this, DiscoverActivity.class);

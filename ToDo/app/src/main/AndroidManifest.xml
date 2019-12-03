@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Myinfo"></activity>
+        <activity android:name=".me.Myinfo"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +23,9 @@
         <activity
             android:name=".TodoList.ListActivity"
             android:label=""/>
-        <activity android:name=".DataActivity" />
-        <activity android:name=".TodoList.DiscoverActivity" />
-        <activity android:name=".MeActivity" />
+        <activity android:name=".datastatic.DataStaticActivity" />
+        <activity android:name=".discover.DiscoverActivity" />
+        <activity android:name=".me.MeActivity" />
     </application>
 
 </manifest>
