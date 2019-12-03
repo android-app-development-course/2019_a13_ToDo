@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="elitedj.me.todo">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".me.rili"></activity>
         <activity android:name=".me.Myinfo" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -27,11 +30,9 @@
             android:name=".TodoList.TodoListActivity"
             android:label="" />
         <activity android:name=".discover.EditNewMomentActivity" />
-        android:name=".TodoList.TodoListActivity"
-        android:label="" />
         <activity
             android:name=".TodoList.NewTodoActivity"
-            android:label="添加代办"></activity>
+            android:label="添加代办" />
     </application>
 
 </manifest>
