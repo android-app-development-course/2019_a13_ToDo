@@ -25,14 +25,10 @@ import com.yinglan.alphatabs.AlphaTabsIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-import elitedj.me.todo.TodoList.ListActivity;
-=======
 import elitedj.me.todo.TodoList.TodoListActivity;
+
 import elitedj.me.todo.discover.DiscoverActivity;
 import elitedj.me.todo.me.Myinfo;
->>>>>>> 6ecca350385bdc2c89bbc20410edb0d956ab4710
-
 
 public class AppMainActivity extends AppCompatActivity {
 

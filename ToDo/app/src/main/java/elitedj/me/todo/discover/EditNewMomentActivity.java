@@ -1,4 +1,4 @@
-package elitedj.me.todo;
+package elitedj.me.todo.discover;
 
 import android.os.Build;
 import android.support.v7.app.ActionBar;
@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.support.v7.widget.Toolbar;
 
 import com.gyf.immersionbar.ImmersionBar;
+
+import elitedj.me.todo.R;
 
 public class EditNewMomentActivity extends AppCompatActivity {
 

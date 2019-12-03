@@ -10,11 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".Myinfo" />
-=======
         <activity android:name=".me.Myinfo" />
->>>>>>> 6ecca350385bdc2c89bbc20410edb0d956ab4710
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,17 +24,12 @@
         <activity android:name=".discover.DiscoverActivity" />
         <activity android:name=".me.MeActivity" />
         <activity
-<<<<<<< HEAD
-            android:name=".TodoList.ListActivity"
-            android:label="" />
-        <activity android:name=".DataActivity" />
-        <activity android:name=".DiscoverActivity" />
-        <activity android:name=".MeActivity" />
-        <activity android:name=".EditNewMomentActivity"></activity>
-=======
             android:name=".TodoList.TodoListActivity"
             android:label="" />
->>>>>>> 6ecca350385bdc2c89bbc20410edb0d956ab4710
+        <activity android:name=".DiscoverActivity" />
+        <activity android:name=".discover.EditNewMomentActivity"/>
+            android:name=".TodoList.TodoListActivity"
+            android:label="" />
     </application>
 
 </manifest>

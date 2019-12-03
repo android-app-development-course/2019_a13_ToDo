@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -15,7 +16,10 @@ import com.github.siyamed.shapeimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
-import elitedj.me.todo.Adapter.MomentListAdapter;
+import elitedj.me.todo.discover.EditNewMomentActivity;
+import elitedj.me.todo.discover.MomentListAdapter;
+import elitedj.me.todo.discover.Moment;
+import elitedj.me.todo.utils.NativeBarHeight;
 
 public class DiscoverActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -85,6 +89,7 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
 
     private void newEditFun(){
         Intent intent = new Intent(DiscoverActivity.this, EditNewMomentActivity.class);
+        Log.e("--->", "newEditFun: ", null);
         startActivity(intent);
     }
 }
