@@ -63,6 +63,12 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
+        RoundedImageView face = findViewById(R.id.myFace);
+        Glide.with(this)
+                .load("https://c-ssl.duitang.com/uploads/item/201601/25/20160125160131_t8ZC2.thumb.700_0.jpeg")
+                .asBitmap()
+                .into(face);
+
         // 朋友圈的列表
         momentList = findViewById(R.id.momentlist);
         for(int i=1;i<=15;i++){

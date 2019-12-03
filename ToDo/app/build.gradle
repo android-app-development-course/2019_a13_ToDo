@@ -42,4 +42,5 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     implementation 'me.kareluo.ui:popmenu:1.1.0' // 弹框气泡化菜单的控件
     implementation 'com.lzy.widget:ninegridview:0.2.0'
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
 }
