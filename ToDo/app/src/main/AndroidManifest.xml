@@ -26,7 +26,6 @@
         <activity
             android:name=".TodoList.TodoListActivity"
             android:label="" />
-        <activity android:name=".DiscoverActivity" />
         <activity android:name=".discover.EditNewMomentActivity"/>
             android:name=".TodoList.TodoListActivity"
             android:label="" />
