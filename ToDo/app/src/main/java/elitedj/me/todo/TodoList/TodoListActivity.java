@@ -1,6 +1,5 @@
 package elitedj.me.todo.TodoList;
 
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,32 +7,33 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import elitedj.me.todo.R;
 
-public class ListActivity extends AppCompatActivity {
+/**
+ * 代办列表Activity
+ */
+public class TodoListActivity extends AppCompatActivity {
 
-    private Button button;
     private ImageButton imageButton;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_todo_list);
 
         // 设置Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.todo_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.todo_toolbar);
         setSupportActionBar(toolbar);
 
         imageButton = findViewById(R.id.fanqie);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ListActivity.this, "hello", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TodoListActivity.this, "hello", Toast.LENGTH_SHORT).show();
             }
         });
 

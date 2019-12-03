@@ -21,7 +21,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".AppMainActivity" />
         <activity
-            android:name=".TodoList.ListActivity"
+            android:name=".TodoList.TodoListActivity"
             android:label=""/>
         <activity android:name=".datastatic.DataStaticActivity" />
         <activity android:name=".discover.DiscoverActivity" />

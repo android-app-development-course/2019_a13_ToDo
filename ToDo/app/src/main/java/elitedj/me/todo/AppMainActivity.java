@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import elitedj.me.todo.discover.DiscoverActivity;
-import elitedj.me.todo.TodoList.ListActivity;
+import elitedj.me.todo.TodoList.TodoListActivity;
 import elitedj.me.todo.me.Myinfo;
 
 
@@ -64,9 +64,9 @@ public class AppMainActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
 
         // 关联ListActivity
-        intentList = new Intent(AppMainActivity.this, ListActivity.class);
+        intentList = new Intent(AppMainActivity.this, TodoListActivity.class);
         listView = manager.startActivity("viewID", intentList).getDecorView();
-        //listView = inflater.inflate(R.layout.activity_list, null);
+        //listView = inflater.inflate(R.layout.activity_todo_list, null);
 
         dataView = inflater.inflate(R.layout.activity_data_static, null);
 

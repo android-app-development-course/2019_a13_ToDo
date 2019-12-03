@@ -15,7 +15,6 @@ import com.github.siyamed.shapeimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
-import elitedj.me.todo.Adapter.MomentListAdapter;
 import elitedj.me.todo.utils.NativeBarHeight;
 import elitedj.me.todo.R;
 
