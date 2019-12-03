@@ -10,4 +10,5 @@
     <color name="grey">#666666</color>
     <color name="darkBlue">#426ab3</color>
     <color name="red">#d81e06</color>
+    <color name="greed">#ff00ff00</color>
 </resources>

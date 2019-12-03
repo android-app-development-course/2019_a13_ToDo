@@ -19,12 +19,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import elitedj.me.todo.TodoList.DiscoverActivity;
 import elitedj.me.todo.TodoList.ListActivity;
 
 
@@ -49,10 +49,11 @@ public class AppMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_app_main);
 
         // 系统透明状态栏
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
-        }
+        ImmersionBar.with(this).init();
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+//            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+//        }
 
         // 设置LocalActivityManager
         manager = new LocalActivityManager(this, true);
