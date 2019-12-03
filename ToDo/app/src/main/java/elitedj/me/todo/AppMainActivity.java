@@ -25,7 +25,13 @@ import com.yinglan.alphatabs.AlphaTabsIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import elitedj.me.todo.TodoList.ListActivity;
+=======
+import elitedj.me.todo.TodoList.TodoListActivity;
+import elitedj.me.todo.discover.DiscoverActivity;
+import elitedj.me.todo.me.Myinfo;
+>>>>>>> 6ecca350385bdc2c89bbc20410edb0d956ab4710
 
 
 public class AppMainActivity extends AppCompatActivity {
@@ -34,10 +40,10 @@ public class AppMainActivity extends AppCompatActivity {
     private ListView lv1;
     private AlphaTabsIndicator bottomTab;
     private ViewPager viewPager;
-    private View listView, dataView, discoverView, meView;
+    private View TodoView, dataView, discoverView, meView;
     private List<View> views = new ArrayList<>();
     private LocalActivityManager manager;
-    private Intent intentList, intentDiscover;
+    private Intent intentTodo, intentDiscover;
     private int[] imagesId={R.drawable.finish,R.drawable.target,R.drawable.core,R.drawable.fengjing,R.drawable.color,R.drawable.set,R.drawable.help,R.drawable.share};
     private	String[] names={"历史记录时间轴","未来时间表","ToDo核心设置","背景海报图设置","主题颜色","更多外观 | 其他设置","帮助","分享给朋友"};
     private  String[] contents={"已完成计划的记录","重要日期倒计时","铃声震动|休息时长","计时或锁机时的背景海报","自定义主题颜色","卡片背景|主界面背景|语言设置","常见的使用问题和解决方法","如果你觉得好用就分享给你的小伙伴们呗"};
@@ -64,11 +70,11 @@ public class AppMainActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
 
         // 关联ListActivity
-        intentList = new Intent(AppMainActivity.this, ListActivity.class);
-        listView = manager.startActivity("viewID", intentList).getDecorView();
-        //listView = inflater.inflate(R.layout.activity_list, null);
+        intentTodo = new Intent(AppMainActivity.this, TodoListActivity.class);
+        TodoView = manager.startActivity("viewID", intentTodo).getDecorView();
+        //listView = inflater.inflate(R.layout.activity_todo_list, null);
 
-        dataView = inflater.inflate(R.layout.activity_data, null);
+        dataView = inflater.inflate(R.layout.activity_data_static, null);
 
         // 关联DiscoverActivity
         intentDiscover = new Intent(AppMainActivity.this, DiscoverActivity.class);
@@ -76,7 +82,7 @@ public class AppMainActivity extends AppCompatActivity {
         //discoverView = inflater.inflate(R.layout.activity_discover, null);
 
         meView = inflater.inflate(R.layout.activity_me, null);
-        views.add(listView);
+        views.add(TodoView);
         views.add(dataView);
         views.add(discoverView);
         views.add(meView);
