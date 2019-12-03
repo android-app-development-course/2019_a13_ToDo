@@ -12,9 +12,6 @@ import android.widget.Toast;
 
 import elitedj.me.todo.R;
 
-/**
- * 代办列表Activity
- */
 public class TodoListActivity extends AppCompatActivity {
 
     private ImageButton imageButton;
@@ -25,9 +22,9 @@ public class TodoListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_list);
 
-        // 设置Toolbar
-        toolbar = (Toolbar) findViewById(R.id.todo_toolbar);
-        setSupportActionBar(toolbar);
+        // 初始化toolbar
+        initToolbar();
+        //setSupportActionBar(toolbar);
 
         imageButton = findViewById(R.id.fanqie);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -36,26 +33,45 @@ public class TodoListActivity extends AppCompatActivity {
                 Toast.makeText(TodoListActivity.this, "hello", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
-    /**
-     * 设置菜单
-     * @param menu
-     * @return
-     */
+    private void initToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.todo_toolbar);
+        toolbar.inflateMenu(R.menu.todo_menu);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.action_clock:
+                        Toast.makeText(TodoListActivity.this, "打卡", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_add:
+                        Toast.makeText(TodoListActivity.this, "Add selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_rank:
+                        Toast.makeText(TodoListActivity.this, "rank", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_datastatic:
+                        Toast.makeText(TodoListActivity.this, "data", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_mode:
+                        Toast.makeText(TodoListActivity.this, "mode", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.todo_toolbar, menu);
+        inflater.inflate(R.menu.todo_menu, menu);
         return true;
     }
 
-    /**
-     * 菜单点击事件
-     * @param item
-     * @return
-     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
