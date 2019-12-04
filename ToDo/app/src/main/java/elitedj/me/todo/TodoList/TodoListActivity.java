@@ -148,21 +148,22 @@ public class TodoListActivity extends AppCompatActivity {
     }
 
     /**
+     * // todo
      * 打卡弹窗
      */
     public void clickIn() {
         //实例化对象
         final PopupWindow popupWindow = new PopupWindow(TodoListActivity.this);
         //获得要显示的视图
-        View showView = TodoListActivity.this.getLayoutInflater().inflate(R.layout.activity_click_in, null);
-        //intentNewTodo = new Intent(TodoListActivity.this, NewTodoActivity.class);
-        //newTodoView = manager.startActivity("viewID", intentNewTodo).getDecorView();
+        //View showView = TodoListActivity.this.getLayoutInflater().inflate(R.layout.activity_click_in, null);
+        intentNewTodo = new Intent(TodoListActivity.this, ClickInActivity.class);
+        newTodoView = manager.startActivity("viewID", intentNewTodo).getDecorView();
         //设置视图
-        popupWindow.setContentView(showView);
+        popupWindow.setContentView(newTodoView);
         // 设置动画
         popupWindow.setAnimationStyle(R.style.mypopwindow_anim_style);
         //设置窗口的高
-        popupWindow.setHeight(700);
+        popupWindow.setHeight(1200);
         //设置窗口的宽
         popupWindow.setWidth(800);
         //将窗口外部点击消失
@@ -170,11 +171,11 @@ public class TodoListActivity extends AppCompatActivity {
         //设置获得焦点
         popupWindow.setFocusable(true);
         //将窗口显示在父控件的指定位置
-        popupWindow.showAtLocation(showView, Gravity.CENTER,0,0);
+        popupWindow.showAtLocation(newTodoView, Gravity.CENTER,0,0);
         //找到控件
-        final EditText userName = showView.findViewById(R.id.finishtime);
-        final EditText password = showView.findViewById(R.id.finishwork);
-        final Toolbar toolbar = showView.findViewById(R.id.clickin_toolbar);
+        final EditText userName = newTodoView.findViewById(R.id.finishtime);
+        final EditText password = newTodoView.findViewById(R.id.finishwork);
+        final Toolbar toolbar = newTodoView.findViewById(R.id.clickin_toolbar);
         //点击左边返回按钮监听事件
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,7 +183,7 @@ public class TodoListActivity extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
-        Button login = showView.findViewById(R.id.judge);
+        Button login = newTodoView.findViewById(R.id.judge);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
