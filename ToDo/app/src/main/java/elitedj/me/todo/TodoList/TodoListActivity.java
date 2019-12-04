@@ -2,6 +2,7 @@ package elitedj.me.todo.TodoList;
 
 import android.app.LocalActivityManager;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
@@ -62,7 +63,7 @@ public class TodoListActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_clock:
-                        Toast.makeText(TodoListActivity.this, "打卡", Toast.LENGTH_SHORT).show();
+                        clickIn();
                         break;
                     case R.id.action_add:
                         newTodo();
@@ -85,7 +86,7 @@ public class TodoListActivity extends AppCompatActivity {
     }
 
     /**
-     * 弹窗
+     * 添加弹窗
      */
     public void newTodo() {
         //实例化对象
@@ -111,11 +112,81 @@ public class TodoListActivity extends AppCompatActivity {
         //找到控件
         final EditText userName = showView.findViewById(R.id.user);
         final EditText password = showView.findViewById(R.id.pass);
+        final Toolbar toolbar = showView.findViewById(R.id.popup_toolbar);
+        //点击左边返回按钮监听事件
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
         Button login = showView.findViewById(R.id.sure);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TodoListActivity.this, "test", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TodoListActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                popupWindow.dismiss();
+            }
+        });
+        WindowManager.LayoutParams attributes = getWindow().getAttributes();
+        //设置透明度
+        attributes.alpha = 0.3f;
+        //设置给Activity
+        getWindow().setAttributes(attributes);
+
+        //关闭PopupWindow的监听
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                WindowManager.LayoutParams attributes = getWindow().getAttributes();
+                //设置透明度
+                attributes.alpha = 1.0f;
+                //设置给Activity
+                getWindow().setAttributes(attributes);
+            }
+        });
+    }
+
+    /**
+     * 打卡弹窗
+     */
+    public void clickIn() {
+        //实例化对象
+        final PopupWindow popupWindow = new PopupWindow(TodoListActivity.this);
+        //获得要显示的视图
+        View showView = TodoListActivity.this.getLayoutInflater().inflate(R.layout.activity_click_in, null);
+        //intentNewTodo = new Intent(TodoListActivity.this, NewTodoActivity.class);
+        //newTodoView = manager.startActivity("viewID", intentNewTodo).getDecorView();
+        //设置视图
+        popupWindow.setContentView(showView);
+        // 设置动画
+        popupWindow.setAnimationStyle(R.style.pop_animation);
+        //设置窗口的高
+        popupWindow.setHeight(700);
+        //设置窗口的宽
+        popupWindow.setWidth(800);
+        //将窗口外部点击消失
+        popupWindow.setOutsideTouchable(true);
+        //设置获得焦点
+        popupWindow.setFocusable(true);
+        //将窗口显示在父控件的指定位置
+        popupWindow.showAtLocation(showView, Gravity.CENTER,0,0);
+        //找到控件
+        final EditText userName = showView.findViewById(R.id.finishtime);
+        final EditText password = showView.findViewById(R.id.finishwork);
+        final Toolbar toolbar = showView.findViewById(R.id.clickin_toolbar);
+        //点击左边返回按钮监听事件
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        Button login = showView.findViewById(R.id.judge);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TodoListActivity.this, "打卡成功", Toast.LENGTH_SHORT).show();
                 popupWindow.dismiss();
             }
         });
