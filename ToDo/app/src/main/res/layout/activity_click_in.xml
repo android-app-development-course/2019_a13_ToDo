@@ -7,7 +7,7 @@
     android:background="@color/white">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/popup_toolbar"
+        android:id="@+id/clickin_toolbar"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:background="@color/blue"
@@ -15,11 +15,20 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="添加代办"
-        app:titleMarginStart="50dp"
+        app:title="打卡"
+        app:titleMarginStart="80dp"
         app:navigationIcon="@drawable/ic_close_white_24dp">
 
     </android.support.v7.widget.Toolbar>
+
+    <com.squareup.timessquare.CalendarPickerView
+        android:id="@+id/calendar_click"
+        android:layout_width="250dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,18 +36,18 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/user"
+            android:id="@+id/finishtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="任务名"/>
+            android:hint="时间"/>
 
         <EditText
-            android:id="@+id/pass"
+            android:id="@+id/finishwork"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="专注时间"/>
+            android:hint="完成事务"/>
         <Button
-            android:id="@+id/sure"
+            android:id="@+id/judge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="确定" />
