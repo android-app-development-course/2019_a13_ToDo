@@ -160,7 +160,7 @@ public class TodoListActivity extends AppCompatActivity {
         //设置视图
         popupWindow.setContentView(showView);
         // 设置动画
-        popupWindow.setAnimationStyle(R.style.pop_animation);
+        popupWindow.setAnimationStyle(R.style.mypopwindow_anim_style);
         //设置窗口的高
         popupWindow.setHeight(700);
         //设置窗口的宽
