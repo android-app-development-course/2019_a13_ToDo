@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".me.Coresetting"></activity>
         <activity android:name=".me.rili" />
         <activity android:name=".me.Myinfo" />
         <activity android:name=".MainActivity">
@@ -33,7 +34,7 @@
         <activity
             android:name=".TodoList.NewTodoActivity"
             android:label="添加代办" />
-        <activity android:name=".TodoList.ClickInActivity"></activity>
+        <activity android:name=".TodoList.ClickInActivity" />
     </application>
 
 </manifest>

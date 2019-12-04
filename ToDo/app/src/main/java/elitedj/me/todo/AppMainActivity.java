@@ -81,12 +81,17 @@ public class AppMainActivity extends AppCompatActivity {
         dataView = manager.startActivity("viewID", intentData).getDecorView();
         //dataView = inflater.inflate(R.layout.activity_data_static, null);
 
+        // 关联me
+        intentMe = new Intent(AppMainActivity.this, MeActivity.class);
+        meView = manager.startActivity("viewID", intentMe).getDecorView();
+        //meView = inflater.inflate(R.layout.activity_me, null);
+
         // 关联DiscoverActivity
         intentDiscover = new Intent(AppMainActivity.this, DiscoverActivity.class);
         discoverView = manager.startActivity("viewID", intentDiscover).getDecorView();
         //discoverView = inflater.inflate(R.layout.activity_discover, null);
 
-        meView = inflater.inflate(R.layout.activity_me, null);
+
         views.add(TodoView);
         views.add(dataView);
         views.add(discoverView);
@@ -94,21 +99,9 @@ public class AppMainActivity extends AppCompatActivity {
         viewPager.setAdapter(new pagerAdapter());
         bottomTab.setViewPager(viewPager);
 
-        lv1 =  meView.findViewById(R.id.listView2);
-        MeListAdpter mAdapter = new MeListAdpter(inflater);
-        //lv1.setAdapter(mAdapter);
-        lv1.setAdapter(mAdapter);
 
 
-        //头像按钮
-        touxiang = (ImageView) meView.findViewById(R.id.touxiang);
-        touxiang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AppMainActivity.this, Myinfo.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
 
