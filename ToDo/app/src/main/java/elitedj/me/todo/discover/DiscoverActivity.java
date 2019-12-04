@@ -71,10 +71,10 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
 
         // 朋友圈的列表
         momentList = findViewById(R.id.momentlist);
-        for(int i=1;i<=15;i++){
+        for(int i=1;i<=9;i++){
             Moment moment = new Moment();
             moment.setFace(R.drawable.img3);
-            moment.setName((char)(i+'A')+"");
+            moment.setName("小"+(char)(i+'A'-1));
             moment.setContent("ajsdfhajklsdghlasdkghasjkldghasjkgadfgdfh");
             ArrayList<Picture> pictures = new ArrayList<>();
             for(int j=1;j<=Math.min(i, 9);j++) {

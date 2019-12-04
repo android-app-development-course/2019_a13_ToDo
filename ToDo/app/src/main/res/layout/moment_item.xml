@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="cxk"
                 android:maxLines="1"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="@color/darkBlue"
                 android:textStyle="bold"/>
 

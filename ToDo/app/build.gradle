@@ -32,19 +32,20 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // 第三方库
-    implementation 'com.yinglan.alphatabs:library:1.0.8'
-    implementation 'com.github.bumptech.glide:glide:3.8.0'
-    implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
+    implementation 'com.yinglan.alphatabs:library:1.0.8' // bottom bar
+    implementation 'com.github.bumptech.glide:glide:3.8.0' //Glide
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar' // 圆角头像
     implementation 'com.makeramen:roundedimageview:2.2.1'//圆形头像
     implementation 'de.hdodenhof:circleimageview:3.0.1'//圆形头像
     implementation 'com.lucasurbas:listitemview:1.1.1'
-    implementation 'com.github.varunest:sparkbutton:1.0.6'
-    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    implementation 'com.github.varunest:sparkbutton:1.0.6' // 点赞按钮
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0' // 设置系统状态栏透明
     implementation 'me.kareluo.ui:popmenu:1.1.0' // 弹框气泡化菜单的控件
-    implementation 'com.lzy.widget:ninegridview:0.2.0'
-    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+    implementation 'com.lzy.widget:ninegridview:0.2.0' // 九宫图
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'// switchButton
     implementation 'com.android.support:cardview-v7:28.0.0'//日历
     implementation 'com.squareup:android-times-square:1.6.5@aar'
     implementation 'com.github.Hitomis:CircleMenu:v1.1.0'//圆形菜单
     implementation 'com.github.medyo:fancybuttons:1.9.1'//花式按钮
+    implementation 'com.github.lecho:hellocharts-android:v1.5.8'
 }

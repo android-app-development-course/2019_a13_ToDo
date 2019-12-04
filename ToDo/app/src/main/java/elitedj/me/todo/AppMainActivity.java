@@ -28,6 +28,7 @@ import java.util.List;
 
 import elitedj.me.todo.TodoList.TodoListActivity;
 
+import elitedj.me.todo.datastatic.DataStaticActivity;
 import elitedj.me.todo.discover.DiscoverActivity;
 import elitedj.me.todo.discover.ImageLoader;
 import elitedj.me.todo.me.MeActivity;
@@ -43,7 +44,7 @@ public class AppMainActivity extends AppCompatActivity {
     private View TodoView, dataView, discoverView, meView;
     private List<View> views = new ArrayList<>();
     private LocalActivityManager manager;
-    private Intent intentTodo, intentDiscover,intentMe;
+    private Intent intentTodo, intentDiscover, intentMe, intentData;
 
 
     @Override
@@ -75,7 +76,10 @@ public class AppMainActivity extends AppCompatActivity {
         TodoView = manager.startActivity("viewID", intentTodo).getDecorView();
         //listView = inflater.inflate(R.layout.activity_todo_list, null);
 
-        dataView = inflater.inflate(R.layout.activity_data_static, null);
+        // 关联data
+        intentData = new Intent(AppMainActivity.this, DataStaticActivity.class);
+        dataView = manager.startActivity("viewID", intentData).getDecorView();
+        //dataView = inflater.inflate(R.layout.activity_data_static, null);
 
         // 关联DiscoverActivity
         intentDiscover = new Intent(AppMainActivity.this, DiscoverActivity.class);
