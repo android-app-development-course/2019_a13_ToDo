@@ -70,12 +70,12 @@ public  class MeActivity extends AppCompatActivity implements AdapterView.OnItem
 
                 break;
             case  4://主题颜色
-                //Intent intent3 = new Intent(MeActivity.this, Chosecolor.class);
-                //startActivity(intent3);
+                Intent intent3 = new Intent(MeActivity.this, Chosecolor.class);
+                startActivity(intent3);
                 break;
             case 5://更多外观和其他设置
-                //Intent intent5 = new Intent(MeActivity.this, Othersetting.class);
-                //startActivity(intent5);
+                Intent intent5 = new Intent(MeActivity.this, Othersetting.class);
+                startActivity(intent5);
                 break;
             case 6://帮助
                 break;

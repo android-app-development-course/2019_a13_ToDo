@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".me.Coresetting"></activity>
+        <activity android:name=".me.Chosecolor"></activity>
+        <activity android:name=".me.Othersetting" />
+        <activity android:name=".me.Futurtimetable" />
+        <activity android:name=".me.Futurtimetab" />
+        <activity android:name=".me.Coresetting" />
         <activity android:name=".me.rili" />
         <activity android:name=".me.Myinfo" />
         <activity android:name=".MainActivity">
