@@ -17,6 +17,7 @@
         android:layout_height="195dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
         app:srcCompat="@drawable/bgtouxiang" />
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -24,10 +25,10 @@
         android:layout_width="113dp"
         android:layout_height="115dp"
         android:layout_gravity="center"
-
         android:layout_marginStart="28dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/touxiang2"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_oval="true" />

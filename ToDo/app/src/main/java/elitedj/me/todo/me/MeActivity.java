@@ -1,6 +1,10 @@
 package elitedj.me.todo.me;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import elitedj.me.todo.AppMainActivity;
 import elitedj.me.todo.R;
@@ -20,6 +25,7 @@ public  class MeActivity extends AppCompatActivity implements AdapterView.OnItem
 
     private ListView lv1;
     private ImageView touxiang;
+    private static String path = "/sdcard/myHead/";// sd路径
 
 
 
@@ -44,11 +50,39 @@ public  class MeActivity extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MeActivity.this, Myinfo.class);
-                startActivity(intent);
+                Bundle bundle  = new Bundle();
+                intent.putExtras(bundle);
+                startActivityForResult(intent, 1);// 跳转并要求返回值，0代表请求值
             }
         });
+        Bitmap bt = BitmapFactory.decodeFile(path + "head.jpg");// 从SD卡中找头像，转换成Bitmap
+        if (bt != null) {
+            @SuppressWarnings("deprecation")
+            Drawable drawable = new BitmapDrawable(bt);// 转换成drawable
+            touxiang.setImageDrawable(drawable);
+        } else {
+            /**
+             * 如果SD里面没有则需要从服务器取头像，取回来的头像再保存在SD中
+             *
+             */
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bundle bundle = data.getExtras();//获取第二个Activity传回的数据
+        Toast.makeText(this, "阿达", Toast.LENGTH_SHORT).show();
+        if(requestCode==1)
+        {
+            if(resultCode == 1)
+            {
+                Toast.makeText(MeActivity.this, bundle.getString("result"), Toast.LENGTH_LONG).show();
+            }
+        }
+
 
     }
+
     //列表的反应事件
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
