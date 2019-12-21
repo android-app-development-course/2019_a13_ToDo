@@ -48,4 +48,5 @@ dependencies {
     implementation 'com.github.Hitomis:CircleMenu:v1.1.0'//圆形菜单
     implementation 'com.github.medyo:fancybuttons:1.9.1'//花式按钮
     implementation 'com.github.lecho:hellocharts-android:v1.5.8'
+    implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
 }
