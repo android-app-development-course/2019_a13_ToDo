@@ -39,4 +39,10 @@
     <color name="darkBlue">#426ab3</color>
     <color name="red">#d81e06</color>
     <color name="greed">#ff00ff00</color>
+    <color name="priority_blue">#20cbff</color>
+    <color name="priority_green">#99CC00</color>
+    <color name="priority_yellow">#FFCC33</color>
+    <color name="priority_red">#FF0033</color>
+    <color name="iv_mask_task_item">#75d6d6d7</color>
+
 </resources>

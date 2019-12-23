@@ -4,7 +4,6 @@ import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,13 +12,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 
 import android.widget.ListView;
 
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.lzy.ninegrid.NineGridView;
@@ -28,14 +24,12 @@ import com.yinglan.alphatabs.AlphaTabsIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
-import elitedj.me.todo.TodoList.TodoListActivity;
+import elitedj.me.todo.TodoList.ListActivity;
 
 import elitedj.me.todo.datastatic.DataStaticActivity;
 import elitedj.me.todo.discover.DiscoverActivity;
 import elitedj.me.todo.discover.ImageLoader;
 import elitedj.me.todo.me.MeActivity;
-import elitedj.me.todo.me.MeListAdpter;
-import elitedj.me.todo.me.Myinfo;
 import elitedj.me.todo.me.Setting;
 import elitedj.me.todo.me.SettingDB;
 
@@ -59,6 +53,21 @@ public class AppMainActivity extends AppCompatActivity {
         DB = new SettingDB(this);
         dbread = DB.getReadableDatabase();
         set = new Setting();
+//        ContentValues values = new ContentValues();
+//        values.put("_id",1);
+//        values.put("theme",1);
+//        values.put("lszd",1);
+//        values.put("music","sdsad");
+//        values.put("resttime","5分钟");
+//        values.put("geyan","ALL IS WELL");
+//        values.put("xianshi",1);
+//        values.put("changliang",2);
+//        values.put("break_time","3分钟");
+//        values.put("break_cnt",5);
+//        values.put("language",1);
+//        String sql= "INSERT INTO Setting (_id, theme,lszd,music,resttime,geyan,xianshi,changliang,break_time,break_cnt,language) VALUES(1,1,1,'asd','5分钟','ALL IS WELL',1,0,'3分钟',5,1)";
+//
+//        dbread.execSQL(sql);
         inittheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_main);
@@ -83,7 +92,7 @@ public class AppMainActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
 
         // 关联ListActivity
-        intentTodo = new Intent(AppMainActivity.this, TodoListActivity.class);
+        intentTodo = new Intent(AppMainActivity.this, ListActivity.class);
         TodoView = manager.startActivity("viewID", intentTodo).getDecorView();
         //listView = inflater.inflate(R.layout.activity_todo_list, null);
 

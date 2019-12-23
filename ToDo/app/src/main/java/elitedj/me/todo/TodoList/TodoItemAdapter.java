@@ -12,9 +12,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import elitedj.me.todo.R;
+import elitedj.me.todo.utils.DateUtils;
 
 /**
  * 给RecyclerView提供的适配器
@@ -22,46 +24,66 @@ import elitedj.me.todo.R;
 public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<TodoItem> todoItemList;   // 代办事件列表
+    private ArrayList<TodoItem> todoItemList;   // 代办事件列表
+    private LayoutInflater layoutInflater;
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
-        ImageView imageView;
-        TextView todoname;
-
-        public ViewHolder(View view) {
-            super(view);
-            cardView = (CardView) view;
-            imageView = (ImageView) view.findViewById(R.id.todo_image);
-            todoname = (TextView) view.findViewById(R.id.todo_name);
-        }
+    public TodoItemAdapter(Context context, ArrayList<TodoItem> todoItemList, LayoutInflater layoutInflater){
+        super();
+        this.mContext = context;
+        this.todoItemList = todoItemList;
+        this.layoutInflater = layoutInflater;
     }
 
-    public TodoItemAdapter(List<TodoItem> todoItemList) {
-        this.todoItemList = todoItemList;
+    @Override
+    public int getItemCount(){
+        return todoItemList.size();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        if(mContext == null) {
-            mContext = viewGroup.getContext();
-        }
-        // 加载子项
-        View view = LayoutInflater.from(mContext).inflate(R.layout.todo_item, viewGroup, false);
-        return new ViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.todo_item, viewGroup,false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        // 获取todo子项
-        TodoItem todoItem = todoItemList.get(i);
-        viewHolder.todoname.setText(todoItem.getTodoName());
-        Glide.with(mContext).load(todoItem.getImageId()).into(viewHolder.imageView);
+        ViewHolder h = (ViewHolder) viewHolder;
+        TodoItem entity = todoItemList.get(i);
+        h.setView(entity); // 设置组件内容
     }
 
-    @Override
-    public int getItemCount() {
-        return todoItemList.size() ;
+    public class ViewHolder extends RecyclerView.ViewHolder{
+
+        // todo_item中的组件
+        CardView cardView;
+        TextView todotitle;
+        TextView todocontent;
+        TextView tododate;
+        TextView todostate;
+        TodoItem todoItem;
+
+        public ViewHolder(View view){
+            super(view);
+            cardView = (CardView) view;
+            todotitle = (TextView) view.findViewById(R.id.tv_title);
+            todocontent = (TextView) view.findViewById(R.id.tv_content);
+            todostate = (TextView) view.findViewById(R.id.tv_state);
+            tododate = (TextView) view.findViewById(R.id.tv_date);
+        }
+
+        public void setView(TodoItem entity) {
+            this.todoItem = entity;
+            // 设置组件现实的内容
+            todotitle.setText(entity.getTitle());
+            todocontent.setText(entity.getContent());
+            long timeStamp = entity.getTimeStamp();
+            String date = DateUtils.formatDateWeek(timeStamp);
+            tododate.setText(date);
+            int state = entity.getState();
+            String sState = (state == TaskState.FINISHED) ? "已完成" : "未完成";
+            todostate.setText(sState);
+        }
     }
 }

@@ -4,13 +4,12 @@ import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,22 +17,35 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 import elitedj.me.todo.R;
 import elitedj.me.todo.me.Setting;
 import elitedj.me.todo.me.SettingDB;
-import mehdi.sakout.fancybuttons.FancyButton;
 
-public class TodoListActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
 
-    private ImageButton imageButton;
     private Toolbar toolbar;
-    private LocalActivityManager manager;
+    private RecyclerView todolistview;
     private View newTodoView;
     private Intent intentNewTodo;
+    private LocalActivityManager manager;
+    private TodoItem[] todoItems = {
+            new TodoItem(1,"学习","学习安卓","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 0),
+            new TodoItem(2,"学习","学习flash","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 1),
+            new TodoItem(3,"学习","学习数据库","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.FINISHED, 2),
+            new TodoItem(4,"学习","学习软件工程","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 3),
+            new TodoItem(5,"学习","学习编译原理","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.FINISHED, 1),
+            new TodoItem(6,"学习","学习数字图形","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 2),
+            new TodoItem(7,"学习","学习平面动画","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 3),
+    };
+    private ArrayList<TodoItem> todoItemArrayList = new ArrayList<>();
+    private TodoItemAdapter todoItemAdapter;
+    private TaskAdapter taskAdapter;
 
     private SettingDB DB;
     private SQLiteDatabase dbread;
@@ -47,7 +59,7 @@ public class TodoListActivity extends AppCompatActivity {
         inittheme();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_todo_list);
+        setContentView(R.layout.activity_list);
 
         // 设置LocalActivityManager
         manager = new LocalActivityManager(this, true);
@@ -55,22 +67,28 @@ public class TodoListActivity extends AppCompatActivity {
 
         // 初始化toolbar
         initToolbar();
-        //setSupportActionBar(toolbar);
+        initItems();
+        todolistview = (RecyclerView) findViewById(R.id.todolist);
+        todolistview.setLayoutManager(new LinearLayoutManager(this));
+        //todoItemAdapter = new TodoItemAdapter(this, todoItemArrayList, getLayoutInflater());
+        //todolistview.setAdapter(todoItemAdapter);
+        taskAdapter = new TaskAdapter(this, todoItemArrayList);
+        todolistview.setAdapter(taskAdapter);
+    }
 
-        imageButton = findViewById(R.id.fanqie);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(TodoListActivity.this, "hello", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void initItems() {
+        todoItemArrayList.clear();
+        for(int i = 0; i < 7; i++)
+        {
+            todoItemArrayList.add(todoItems[i]);
+        }
     }
 
     /**
      * 初始化toolbar
      */
     private void initToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.todo_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.list_toolbar);
         toolbar.inflateMenu(R.menu.todo_menu);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -83,13 +101,13 @@ public class TodoListActivity extends AppCompatActivity {
                         newTodo();
                         break;
                     case R.id.action_rank:
-                        Toast.makeText(TodoListActivity.this, "rank", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListActivity.this, "rank", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_datastatic:
-                        Toast.makeText(TodoListActivity.this, "data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListActivity.this, "data", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_mode:
-                        Toast.makeText(TodoListActivity.this, "mode", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListActivity.this, "mode", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;
@@ -104,9 +122,9 @@ public class TodoListActivity extends AppCompatActivity {
      */
     public void newTodo() {
         //实例化对象
-        final PopupWindow popupWindow = new PopupWindow(TodoListActivity.this);
+        final PopupWindow popupWindow = new PopupWindow(ListActivity.this);
         //获得要显示的视图
-        View showView = TodoListActivity.this.getLayoutInflater().inflate(R.layout.activity_new_todo, null);
+        View showView = ListActivity.this.getLayoutInflater().inflate(R.layout.activity_new_todo, null);
         //intentNewTodo = new Intent(TodoListActivity.this, NewTodoActivity.class);
         //newTodoView = manager.startActivity("viewID", intentNewTodo).getDecorView();
         //设置视图
@@ -138,7 +156,7 @@ public class TodoListActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TodoListActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
                 popupWindow.dismiss();
             }
         });
@@ -167,10 +185,10 @@ public class TodoListActivity extends AppCompatActivity {
      */
     public void clickIn() {
         //实例化对象
-        final PopupWindow popupWindow = new PopupWindow(TodoListActivity.this);
+        final PopupWindow popupWindow = new PopupWindow(ListActivity.this);
         //获得要显示的视图
         //View showView = TodoListActivity.this.getLayoutInflater().inflate(R.layout.activity_click_in, null);
-        intentNewTodo = new Intent(TodoListActivity.this, ClickInActivity.class);
+        intentNewTodo = new Intent(ListActivity.this, ClickInActivity.class);
         newTodoView = manager.startActivity("viewID", intentNewTodo).getDecorView();
         //设置视图
         popupWindow.setContentView(newTodoView);
@@ -201,7 +219,7 @@ public class TodoListActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TodoListActivity.this, "打卡成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListActivity.this, "打卡成功", Toast.LENGTH_SHORT).show();
                 popupWindow.dismiss();
             }
         });
