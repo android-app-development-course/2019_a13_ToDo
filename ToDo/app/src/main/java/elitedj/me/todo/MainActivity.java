@@ -17,7 +17,9 @@ import com.gyf.immersionbar.ImmersionBar;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+import elitedj.me.todo.bean.User;
 import elitedj.me.todo.me.Setting;
 import elitedj.me.todo.me.SettingDB;
 
@@ -79,22 +81,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void loginFun(){
-//        BmobUser bu = new BmobUser();
-//        bu.setUsername(username.getText().toString());
-//        bu.setPassword(password.getText().toString());
-//        bu.login(this, new SaveListener() {
-//            @Override
-//            public void onSuccess() {
-//                Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(int i, String s) {
-//                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        Intent intent = new Intent(MainActivity.this, AppMainActivity.class);
-        startActivity(intent);
+        BmobUser bu = new BmobUser();
+        bu.setUsername(username.getText().toString());
+        bu.setPassword(password.getText().toString());
+        bu.login(new SaveListener<User>() {
+            @Override
+            public  void  done(User myUser, BmobException e)
+            {
+                if(e==null)
+                {
+                    User user=User.getCurrentUser(User.class);
+                    Intent intent = new Intent(MainActivity.this, AppMainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(),"登陆成功",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),""+e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
     }
 
     private void registerFun(){

@@ -1,5 +1,6 @@
 package elitedj.me.todo.datastatic;
 
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -39,7 +40,7 @@ public class DataStaticActivity extends AppCompatActivity {
         dbread = DB.getReadableDatabase();
         set = new Setting();
         inittheme();
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_static);
 

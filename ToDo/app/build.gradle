@@ -17,7 +17,9 @@ android {
         }
     }
 }
-
+android {
+    useLibrary 'org.apache.http.legacy'
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
@@ -49,8 +51,14 @@ dependencies {
     implementation 'com.github.medyo:fancybuttons:1.9.1'//花式按钮
     implementation 'com.github.lecho:hellocharts-android:v1.5.8'
     implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
-    implementation 'cn.bmob.android:bmob-sdk:3.4.7-aar'//bmob
     implementation 'com.github.shixiuwen:colorpicker:v1.0.3'    //取色器
+
+    implementation 'cn.bmob.android:bmob-sdk:3.7.3-rc1'//bmob
+    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.squareup.okio:okio:2.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
 
     implementation 'cn.bmob.android:http-legacy:1.0'
 }

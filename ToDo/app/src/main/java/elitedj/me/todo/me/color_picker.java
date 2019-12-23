@@ -1,6 +1,8 @@
 package elitedj.me.todo.me;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,10 +20,16 @@ public class color_picker extends AppCompatActivity {
 
     private FancyButton sure;
     private ColorPickerView colorPicker;
+    private SettingDB DB;
+    private SQLiteDatabase dbread;
+    private Setting set;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-        //this.setTheme(R.style.DrakAppTheme);
+        DB = new SettingDB(this);
+        dbread = DB.getReadableDatabase();
+        set = new Setting();
+        inittheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_picker);
         //initTheme();
@@ -56,4 +64,35 @@ public class color_picker extends AppCompatActivity {
             }
         });
     }
+    public void inittheme() {
+        Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);
+        cursor.moveToNext();
+        set.setTheme(cursor.getInt(cursor.getColumnIndex("theme")));
+        switch (set.getTheme())
+        {
+            case 0:
+                setTheme(R.style.GreenAppTheme);
+                break;
+            case 1:
+                setTheme(R.style.BlueAppTheme);
+                break;
+            case 2:
+                setTheme(R.style.PurpleAppTheme);
+                break;
+            case 3:
+                setTheme(R.style.BronzeAppTheme);
+                break;
+            case 4:
+                setTheme(R.style.PinkAppTheme);
+                break;
+            case 5:
+                setTheme(R.style.OrAppTheme);
+                break;
+
+            default:
+                break;
+        }
+        cursor.close();
+    }
+
 }

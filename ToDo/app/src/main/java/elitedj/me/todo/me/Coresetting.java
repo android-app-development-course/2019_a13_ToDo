@@ -40,6 +40,7 @@ public class Coresetting extends AppCompatActivity {
         dbw   = DB.getWritableDatabase();
         set = new Setting();
         getData();
+        inittheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coresetting);
         init();
@@ -220,6 +221,36 @@ public class Coresetting extends AppCompatActivity {
         builder.create();
         builder.show();
 
+    }
+    public void inittheme() {
+        Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);
+        cursor.moveToNext();
+        set.setTheme(cursor.getInt(cursor.getColumnIndex("theme")));
+        switch (set.getTheme())
+        {
+            case 0:
+                setTheme(R.style.GreenAppTheme);
+                break;
+            case 1:
+                setTheme(R.style.BlueAppTheme);
+                break;
+            case 2:
+                setTheme(R.style.PurpleAppTheme);
+                break;
+            case 3:
+                setTheme(R.style.BronzeAppTheme);
+                break;
+            case 4:
+                setTheme(R.style.PinkAppTheme);
+                break;
+            case 5:
+                setTheme(R.style.OrAppTheme);
+                break;
+
+            default:
+                break;
+        }
+        cursor.close();
     }
 
 }

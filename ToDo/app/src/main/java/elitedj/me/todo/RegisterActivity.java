@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import elitedj.me.todo.bean.User;
 import elitedj.me.todo.me.Setting;
@@ -90,18 +92,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             bu.setUsername(username.getText().toString());
             bu.setPassword(password.getText().toString());
             bu.setNickName(nickname.getText().toString());
-            bu.signUp(this, new SaveListener() {
+            bu.signUp(new SaveListener<User>() {
                 @Override
-                public void onSuccess() {
-                    Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
-                @Override
-                public void onFailure(int i, String s) {
-                    Toast.makeText(RegisterActivity.this, "注册失败:"+s, Toast.LENGTH_SHORT).show();
+                public void done(User user, BmobException e) {
+                    if (e == null) {
+                        Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "注册失败"+e, Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
+//            bu.signUp( new SaveListener<User>() {
+//                @Override
+//                public void done(User s, BmobException e) {
+//                    if(e==null){
+//                        Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        //loge(e);
+//                        Toast.makeText(RegisterActivity.this, "注册失败"+e, Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
         }
     }
 

@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="基础设置"
-                android:textColor="#66C0EC"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:typeface="serif" />
@@ -166,7 +166,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:text="5分钟"
-                android:textColor="#66C0EC"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:typeface="serif" />
@@ -232,7 +232,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="高级设置"
-                android:textColor="#66C0EC"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:typeface="serif" />
@@ -346,7 +346,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:text="5分钟"
-                android:textColor="#66C0EC"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:typeface="serif" />
@@ -384,7 +384,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:text="5次"
-                android:textColor="#66C0EC"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:typeface="serif" />
