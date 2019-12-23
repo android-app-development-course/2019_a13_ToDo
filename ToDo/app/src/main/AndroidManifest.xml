@@ -20,6 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".me.color_picker"></activity>
         <activity android:name=".me.Chosecolor" />
         <activity android:name=".me.Othersetting" />
         <activity android:name=".me.Futurtimetable" />
@@ -48,8 +49,8 @@
             android:label="添加代办" />
         <activity android:name=".TodoList.ClickInActivity" />
         <activity
-            android:configChanges="orientation|screenSize"
-            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity" />
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

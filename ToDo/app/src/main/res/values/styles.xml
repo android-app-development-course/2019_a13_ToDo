@@ -9,6 +9,67 @@
 
         <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
     </style>
+    <style name="BlueAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/bluecolorPrimary</item>
+        <item name="colorPrimaryDark">@color/bluecolorPrimaryDark</item>
+        <item name="colorAccent">@color/bluecolorAccent</item>
+        <!--        <item name="android:themecolor">@color/white</item>-->
+
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    <style name="PinkAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/pinkcolorPrimary</item>
+        <item name="colorPrimaryDark">@color/pinkcolorPrimaryDark</item>
+        <item name="colorAccent">@color/pinkcolorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    <style name="GreenAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/greencolorPrimary</item>
+        <item name="colorPrimaryDark">@color/greencolorPrimaryDark</item>
+        <item name="colorAccent">@color/greencolorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    <style name="PurpleAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/purplecolorPrimary</item>
+        <item name="colorPrimaryDark">@color/purplecolorPrimaryDark</item>
+        <item name="colorAccent">@color/purplecolorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    <style name="BronzeAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/bronzecolorPrimary</item>
+        <item name="colorPrimaryDark">@color/bronzecolorPrimaryDark</item>
+        <item name="colorAccent">@color/bronzecolorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+
+    <style name="OrAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/orcolorPrimary</item>
+        <item name="colorPrimaryDark">@color/orcolorPrimaryDark</item>
+        <item name="colorAccent">@color/orcolorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
 
     <style name="Font_family_light" parent="AppTheme">
         <item name="android:fontFamily">sans-serif-light</item>

@@ -30,12 +30,14 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/R1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="0dp"
             android:paddingLeft="15dp"
             android:paddingTop="0dp"
             android:background="@color/white"
+            android:clickable="true"
             >
 
             <ImageView
@@ -75,12 +77,14 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/R2"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="1dp"
             android:paddingLeft="15dp"
             android:paddingTop="1dp"
             android:background="@color/white"
+            android:clickable="true"
             >
 
             <ImageView
@@ -119,12 +123,16 @@
 
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/R3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="1dp"
             android:paddingLeft="15dp"
             android:paddingTop="1dp"
             android:background="@color/white"
+            android:focusable="true"
+            android:clickable="true"
+            android:descendantFocusability ="beforeDescendants"
             >
 
             <ImageView
@@ -150,6 +158,7 @@
                 android:textStyle="bold"
                 android:typeface="serif" />
             <TextView
+                android:id="@+id/resttime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -165,12 +174,15 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/R4"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="1dp"
             android:paddingLeft="15dp"
             android:paddingTop="1dp"
             android:background="@color/white"
+            android:focusable="true"
+            android:clickable="true"
             >
 
             <ImageView
@@ -228,11 +240,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/R5"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="15dp"
             android:paddingTop="1dp"
             android:background="@color/white"
+            android:clickable="true"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -259,7 +273,7 @@
                 android:typeface="serif" />
 
             <android.support.v7.widget.SwitchCompat
-                android:id="@+id/switch2"
+                android:id="@+id/xianshi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -269,11 +283,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/R6"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="15dp"
             android:layout_marginTop="1dp"
             android:background="@color/white"
+            android:clickable="true"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -290,7 +306,7 @@
 
 
             <android.support.v7.widget.SwitchCompat
-                android:id="@+id/switch3"
+                android:id="@+id/changliang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -300,12 +316,14 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/R7"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="1dp"
             android:paddingLeft="15dp"
             android:paddingTop="1dp"
             android:background="@color/white"
+            android:clickable="true"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -320,6 +338,7 @@
                 android:textStyle="bold"
                 android:typeface="serif" />
             <TextView
+                android:id="@+id/break_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -335,12 +354,14 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/R8"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="1dp"
             android:paddingLeft="15dp"
             android:paddingTop="1dp"
             android:background="@color/white"
+            android:clickable="true"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -355,6 +376,7 @@
                 android:textStyle="bold"
                 android:typeface="serif" />
             <TextView
+                android:id="@+id/break_cnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"

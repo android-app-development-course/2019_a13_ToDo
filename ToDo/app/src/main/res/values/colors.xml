@@ -3,6 +3,34 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="bluecolorPrimary">#0084ff</color>
+    <color name="bluecolorPrimaryDark">#0084ff</color>
+    <color name="bluecolorAccent">#0084ff</color>
+
+    <color name="pinkcolorPrimary">#F797D5</color>
+    <color name="pinkcolorPrimaryDark">#F797D5</color>
+    <color name="pinkcolorAccent">#F797D5</color>
+
+
+    <color name="greencolorPrimary">#56C9BA</color>
+    <color name="greencolorPrimaryDark">#56C9BA</color>
+    <color name="greencolorAccent">#56C9BA</color>
+
+
+    <color name="purplecolorPrimary">#8650E4</color>
+    <color name="purplecolorPrimaryDark">#8650E4</color>
+    <color name="purplecolorAccent">#8650E4</color>
+
+    <color name="bronzecolorPrimary">#CC8234</color>
+    <color name="bronzecolorPrimaryDark">#CC8234</color>
+    <color name="bronzecolorAccent">#CC8234</color>
+
+    <color name="orcolorPrimary">#FA682F</color>
+    <color name="orcolorPrimaryDark">#FA682F</color>
+    <color name="orcolorAccent">#FA682F</color>
+
+
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>

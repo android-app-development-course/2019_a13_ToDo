@@ -49,7 +49,7 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
     private int[] imagesId={R.drawable.name,R.drawable.sex,R.drawable.birthday,R.drawable.email,R.drawable.tel,R.drawable.school,R.drawable.exit};
     private	String[] names={"蔡徐坤","男","1999-07-30","842184122@qq.com","13268453217","SCNU","退出登录"};
     private String[] contents={"更改昵称","更改性别","更改生日","更改邮箱","更改电话","更改学校","退出该账号"};
-    private	String[] listdb={"name","sex","birth","emali","tel","school","out"};
+    private	String[] listdb={"name","sex","birth","email","tel","school","out"};
     private MyBaseAdapter mAdapter;
     private PersonDB DB;
     private SQLiteDatabase dbread;
@@ -86,7 +86,7 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
         touxiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        showTypeDialog();
+                showTypeDialog();
             }
         });
 
@@ -157,7 +157,6 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
                 if (resultCode == RESULT_OK) {
                     cropPhoto(data.getData());// 裁剪图片
                 }
-
                 break;
             case 2:
                 if (resultCode == RESULT_OK) {
