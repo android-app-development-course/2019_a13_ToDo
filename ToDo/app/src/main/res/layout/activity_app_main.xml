@@ -28,7 +28,7 @@
             app:tabIconSelected="@drawable/list_selected"
             app:tabTextSize="12sp"
             app:textColorNormal="@color/grey"
-            app:textColorSelected="@color/blue"/>
+            app:textColorSelected="?attr/colorPrimary"/>
 
         <com.yinglan.alphatabs.AlphaTabView
             android:id="@+id/data"
@@ -41,7 +41,7 @@
             app:tabIconSelected="@drawable/data_selected"
             app:tabTextSize="12sp"
             app:textColorNormal="@color/grey"
-            app:textColorSelected="@color/blue"/>
+            app:textColorSelected="?attr/colorPrimary"/>
 
         <com.yinglan.alphatabs.AlphaTabView
             android:id="@+id/discover"
@@ -54,7 +54,7 @@
             app:tabIconSelected="@drawable/discover_selected"
             app:tabTextSize="12sp"
             app:textColorNormal="@color/grey"
-            app:textColorSelected="@color/blue"/>
+            app:textColorSelected="?attr/colorPrimary"/>
 
         <com.yinglan.alphatabs.AlphaTabView
             android:id="@+id/me"
@@ -67,7 +67,7 @@
             app:tabIconSelected="@drawable/me_selected"
             app:tabTextSize="12sp"
             app:textColorNormal="@color/grey"
-            app:textColorSelected="@color/blue"/>
+            app:textColorSelected="?attr/colorPrimary"/>
 
 
 

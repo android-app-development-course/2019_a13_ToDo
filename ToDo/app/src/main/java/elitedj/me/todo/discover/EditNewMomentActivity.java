@@ -2,6 +2,8 @@ package elitedj.me.todo.discover;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +34,8 @@ import java.util.ArrayList;
 import javax.security.auth.login.LoginException;
 
 import elitedj.me.todo.R;
+import elitedj.me.todo.me.Setting;
+import elitedj.me.todo.me.SettingDB;
 import me.nereo.multi_image_selector.MultiImageSelector;
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
@@ -44,11 +48,20 @@ public class EditNewMomentActivity extends AppCompatActivity {
     private int wh;
     private int width;
 
+    private SettingDB DB;
+    private SQLiteDatabase dbread;
+    private Setting set;
+
     private static final int REQUEST_CAMERA_CODE = 10;
     //private static final int REQUEST_PREVIEW_CODE = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DB = new SettingDB(this);
+        dbread = DB.getReadableDatabase();
+        set = new Setting();
+        inittheme();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_new_moment);
 
@@ -262,4 +275,34 @@ public class EditNewMomentActivity extends AppCompatActivity {
         return (int) (dp * scale + 0.5f);
     }
 
+    public void inittheme() {
+        Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);
+        cursor.moveToNext();
+        set.setTheme(cursor.getInt(cursor.getColumnIndex("theme")));
+        switch (set.getTheme())
+        {
+            case 0:
+                setTheme(R.style.GreenAppTheme);
+                break;
+            case 1:
+                setTheme(R.style.BlueAppTheme);
+                break;
+            case 2:
+                setTheme(R.style.PurpleAppTheme);
+                break;
+            case 3:
+                setTheme(R.style.BronzeAppTheme);
+                break;
+            case 4:
+                setTheme(R.style.PinkAppTheme);
+                break;
+            case 5:
+                setTheme(R.style.OrAppTheme);
+                break;
+
+            default:
+                break;
+        }
+        cursor.close();
+    }
 }

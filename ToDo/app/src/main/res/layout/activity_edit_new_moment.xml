@@ -4,18 +4,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/blue">
+    android:background="?attr/colorPrimary">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="24dp"
-        android:background="@color/blue"/>
+        android:background="?attr/colorPrimary"/>
     
     <android.support.v7.widget.Toolbar
         android:id="@+id/newEditToolBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/blue"
+        android:background="?attr/colorPrimary"
         app:navigationIcon="@drawable/ic_return">
     </android.support.v7.widget.Toolbar>
 
@@ -85,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     app:sb_uncheck_color="@color/grey"
-                    app:sb_checked_color="@color/blue"
+                    app:sb_checked_color="?attr/colorPrimary"
                     app:sb_checked="false"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="15dp"

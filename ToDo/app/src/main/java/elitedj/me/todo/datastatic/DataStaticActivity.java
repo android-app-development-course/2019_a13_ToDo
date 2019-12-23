@@ -1,5 +1,7 @@
 package elitedj.me.todo.datastatic;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import elitedj.me.todo.R;
+import elitedj.me.todo.me.Setting;
+import elitedj.me.todo.me.SettingDB;
 import lecho.lib.hellocharts.gesture.ZoomType;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
@@ -25,8 +29,17 @@ public class DataStaticActivity extends AppCompatActivity {
     private LineChartView lineChart;
     private ColumnChartView barChart;
 
+    private SettingDB DB;
+    private SQLiteDatabase dbread;
+    private Setting set;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DB = new SettingDB(this);
+        dbread = DB.getReadableDatabase();
+        set = new Setting();
+        inittheme();
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_static);
 
@@ -97,6 +110,37 @@ public class DataStaticActivity extends AppCompatActivity {
         barChart.setColumnChartData(data);
         barChart.setZoomEnabled(false);
         barChart.startDataAnimation();
+    }
+
+    public void inittheme() {
+        Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);
+        cursor.moveToNext();
+        set.setTheme(cursor.getInt(cursor.getColumnIndex("theme")));
+        switch (set.getTheme())
+        {
+            case 0:
+                setTheme(R.style.GreenAppTheme);
+                break;
+            case 1:
+                setTheme(R.style.BlueAppTheme);
+                break;
+            case 2:
+                setTheme(R.style.PurpleAppTheme);
+                break;
+            case 3:
+                setTheme(R.style.BronzeAppTheme);
+                break;
+            case 4:
+                setTheme(R.style.PinkAppTheme);
+                break;
+            case 5:
+                setTheme(R.style.OrAppTheme);
+                break;
+
+            default:
+                break;
+        }
+        cursor.close();
     }
 
 }

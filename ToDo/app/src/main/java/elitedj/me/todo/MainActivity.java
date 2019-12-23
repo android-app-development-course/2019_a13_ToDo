@@ -1,6 +1,8 @@
 package elitedj.me.todo;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import com.gyf.immersionbar.ImmersionBar;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
+import elitedj.me.todo.me.Setting;
+import elitedj.me.todo.me.SettingDB;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -24,8 +28,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button login;
     private TextView register;
 
+    private SettingDB DB;
+    private SQLiteDatabase dbread;
+    private Setting set;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DB = new SettingDB(this);
+        dbread = DB.getReadableDatabase();
+        set = new Setting();
+        inittheme();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -89,4 +102,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         overridePendingTransition(0, 0);
     }
+
+    public void inittheme() {
+        Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);
+        cursor.moveToNext();
+        set.setTheme(cursor.getInt(cursor.getColumnIndex("theme")));
+        switch (set.getTheme())
+        {
+            case 0:
+                setTheme(R.style.GreenAppTheme);
+                break;
+            case 1:
+                setTheme(R.style.BlueAppTheme);
+                break;
+            case 2:
+                setTheme(R.style.PurpleAppTheme);
+                break;
+            case 3:
+                setTheme(R.style.BronzeAppTheme);
+                break;
+            case 4:
+                setTheme(R.style.PinkAppTheme);
+                break;
+            case 5:
+                setTheme(R.style.OrAppTheme);
+                break;
+
+            default:
+                break;
+        }
+        cursor.close();
+    }
+
 }

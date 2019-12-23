@@ -51,4 +51,6 @@ dependencies {
     implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
     implementation 'cn.bmob.android:bmob-sdk:3.4.7-aar'//bmob
     implementation 'com.github.shixiuwen:colorpicker:v1.0.3'    //取色器
+
+    implementation 'cn.bmob.android:http-legacy:1.0'
 }
