@@ -49,4 +49,5 @@ dependencies {
     implementation 'com.github.medyo:fancybuttons:1.9.1'//花式按钮
     implementation 'com.github.lecho:hellocharts-android:v1.5.8'
     implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
+    implementation 'cn.bmob.android:bmob-sdk:3.4.7-aar'//bmob
 }

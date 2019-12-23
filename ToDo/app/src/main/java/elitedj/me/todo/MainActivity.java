@@ -13,20 +13,23 @@ import android.widget.Toast;
 
 import com.gyf.immersionbar.ImmersionBar;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.SaveListener;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText username;
     private EditText password;
     private Button login;
     private TextView register;
-    private int[] imagesId={R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang,R.drawable.touxiang};
-    private	String[] names={"短毛猫","猴子","兔子","老鼠"};
-    private  String[] contents={"可爱","顽皮","温顺","伶俐"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bmob.initialize(this, "270e4c5889c9b50d64c82ef459cbcee4");
 
         // 系统透明状态栏
         ImmersionBar.with(this).init();
@@ -63,10 +66,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void loginFun(){
-
-            Intent intent = new Intent(MainActivity.this, AppMainActivity.class);
-            startActivity(intent);
-
+//        BmobUser bu = new BmobUser();
+//        bu.setUsername(username.getText().toString());
+//        bu.setPassword(password.getText().toString());
+//        bu.login(this, new SaveListener() {
+//            @Override
+//            public void onSuccess() {
+//                Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFailure(int i, String s) {
+//                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        Intent intent = new Intent(MainActivity.this, AppMainActivity.class);
+        startActivity(intent);
     }
 
     private void registerFun(){
