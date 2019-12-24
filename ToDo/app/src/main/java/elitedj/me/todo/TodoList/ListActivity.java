@@ -226,7 +226,7 @@ public class ListActivity extends AppCompatActivity {
         // 设置动画
         popupWindow.setAnimationStyle(R.style.mypopwindow_anim_style);
         //设置窗口的高
-        popupWindow.setHeight(1200);
+        popupWindow.setHeight(1300);
         //设置窗口的宽
         popupWindow.setWidth(800);
         //将窗口外部点击消失
