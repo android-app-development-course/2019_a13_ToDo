@@ -107,25 +107,25 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
             //设置nickName
             nickName.setText(user.getNickName());
             //下载头像
-            BmobFile bf = user.getFace();
-            bf.download(new DownloadFileListener() {
-                @Override
-                public void done(String s, BmobException e) {
-                    if(e==null) {
-                        Glide.with(DiscoverActivity.this)
-                                .load(s)
-                                .asBitmap()
-                                .into(face);
-                    }else {
-                        Log.e("--->", "done: discover face download fail"+e, null);
-                    }
-                }
-
-                @Override
-                public void onProgress(Integer integer, long l) {
-
-                }
-            });
+//            BmobFile bf = user.getFace();
+//            bf.download(new DownloadFileListener() {
+//                @Override
+//                public void done(String s, BmobException e) {
+//                    if(e==null) {
+//                        Glide.with(DiscoverActivity.this)
+//                                .load(s)
+//                                .asBitmap()
+//                                .into(face);
+//                    }else {
+//                        Log.e("--->", "done: discover face download fail"+e, null);
+//                    }
+//                }
+//
+//                @Override
+//                public void onProgress(Integer integer, long l) {
+//
+//                }
+//            });
 
         } else {
             Log.e("--->", "discoverViewInit: discover not get face and nickname", null);

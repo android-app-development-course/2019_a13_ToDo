@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 28
@@ -15,6 +16,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 android {
@@ -52,6 +57,8 @@ dependencies {
     implementation 'com.github.lecho:hellocharts-android:v1.5.8'
     implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
     implementation 'com.github.shixiuwen:colorpicker:v1.0.3'    //取色器
+    implementation 'com.jakewharton:butterknife:9.0.0'  // 使用Butterknife可以避免大量的findViewById,setOnClickListener等查找View、绑定事件的代码
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
 
     implementation 'cn.bmob.android:bmob-sdk:3.7.3-rc1'//bmob
     implementation "io.reactivex.rxjava2:rxjava:2.2.2"
