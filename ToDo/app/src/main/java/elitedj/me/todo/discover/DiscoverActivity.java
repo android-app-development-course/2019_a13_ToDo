@@ -61,7 +61,12 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
         Bmob.initialize(this, "270e4c5889c9b50d64c82ef459cbcee4");
 
         discoverViewInit();
-
+        newEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newEditFun();
+            }
+        });
     }
 
     public void discoverViewInit(){
@@ -106,6 +111,7 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
             user = BmobUser.getCurrentUser(User.class);
             //设置nickName
             nickName.setText(user.getNickName());
+
             //下载头像
 //            BmobFile bf = user.getFace();
 //            bf.download(new DownloadFileListener() {

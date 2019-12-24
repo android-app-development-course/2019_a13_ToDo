@@ -34,11 +34,12 @@
 
 
     <TextView
-        android:id="@+id/UserName"
+        android:id="@+id/usern"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
+        android:textColor="@color/white"
         android:text="UserName"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -50,7 +51,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="68dp"
-        android:background="#F0EBB9"
+        android:background="?attr/colorPrimary"
         android:text="共专注 0 天"
         android:textColor="#FCEB6209"
         android:textSize="8sp"
@@ -63,7 +64,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="108dp"
-        android:background="#F0EBB9"
+        android:background="?attr/colorPrimary"
         android:text="已连续专注 0 天"
         android:textColor="#FCEB6209"
         android:textSize="8sp"

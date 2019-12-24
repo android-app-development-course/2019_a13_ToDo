@@ -28,14 +28,17 @@ import com.yinglan.alphatabs.AlphaTabsIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobUser;
 import elitedj.me.todo.TodoList.ListActivity;
 
+import elitedj.me.todo.bean.User;
 import elitedj.me.todo.datastatic.DataStaticActivity;
 import elitedj.me.todo.discover.DiscoverActivity;
 import elitedj.me.todo.discover.ImageLoader;
 import elitedj.me.todo.discover.Moment;
 import elitedj.me.todo.discover.MomentListAdapter;
 import elitedj.me.todo.me.MeActivity;
+import elitedj.me.todo.me.PersonDB;
 import elitedj.me.todo.me.Setting;
 import elitedj.me.todo.me.SettingDB;
 
@@ -51,14 +54,28 @@ public class AppMainActivity extends AppCompatActivity {
     private Intent intentTodo, intentDiscover, intentMe, intentData;
 
     private SettingDB DB;
-    private SQLiteDatabase dbread;
+    private PersonDB PDB;
+    private SQLiteDatabase dbread,dread2;
     private Setting set;
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        PDB = new PersonDB(this);
+        dread2 = PDB.getReadableDatabase();
+
         DB = new SettingDB(this);
         dbread = DB.getReadableDatabase();
         set = new Setting();
+
+        if(BmobUser.isLogin()) {
+            //获取登录用户
+            user = BmobUser.getCurrentUser(User.class);
+            //设置nickName
+            String sql = "update Person set name = '"+ user.getNickName()+"'";
+            dread2.execSQL(sql);
+        }
 //        ContentValues values = new ContentValues();
 //        values.put("_id",1);
 //        values.put("theme",1);
