@@ -72,15 +72,11 @@ public  class MeActivity extends AppCompatActivity implements AdapterView.OnItem
         super.onActivityResult(requestCode, resultCode, data);
         Bundle bundle = data.getExtras();//获取第二个Activity传回的数据
         Toast.makeText(this, "阿达", Toast.LENGTH_SHORT).show();
-        if(requestCode==1)
-        {
-            if(resultCode == 1)
-            {
+        if(requestCode==1) {
+            if (resultCode == 1) {
                 Toast.makeText(MeActivity.this, bundle.getString("result"), Toast.LENGTH_LONG).show();
             }
         }
-
-
     }
 
     //列表的反应事件
