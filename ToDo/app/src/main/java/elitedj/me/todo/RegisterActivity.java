@@ -128,7 +128,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Log.e("--->", "registerFun: "+e, null);
             }
             Log.e("--->", "registerFun: "+path, null);
-            bu.setFace(new BmobFile(new File(path)));
+            bu.setFace(new BmobFile(username.getText().toString()+"Default_face", "", path));
             BmobFile bf = bu.getFace();
             //上传头像
             bf.uploadblock(new UploadFileListener() {
