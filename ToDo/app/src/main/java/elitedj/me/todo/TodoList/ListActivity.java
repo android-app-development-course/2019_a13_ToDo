@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -35,13 +36,13 @@ public class ListActivity extends AppCompatActivity {
     private Intent intentNewTodo;
     private LocalActivityManager manager;
     private TodoItem[] todoItems = {
-            new TodoItem(1,"学习","学习安卓","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 0),
-            new TodoItem(2,"学习","学习flash","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 1),
-            new TodoItem(3,"学习","学习数据库","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.FINISHED, 2),
-            new TodoItem(4,"学习","学习软件工程","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 3),
-            new TodoItem(5,"学习","学习编译原理","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.FINISHED, 1),
-            new TodoItem(6,"学习","学习数字图形","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 2),
-            new TodoItem(7,"学习","学习平面动画","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 3),
+            new TodoItem(1,"学习","学习安卓","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 0, "番茄钟"),
+            new TodoItem(2,"学习","学习flash","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 1, "番茄钟"),
+            new TodoItem(3,"学习","学习数据库","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.FINISHED, 2,"番茄钟"),
+            new TodoItem(4,"学习","学习软件工程","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 3, "番茄钟"),
+            new TodoItem(5,"学习","学习编译原理","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.FINISHED, 1, "番茄钟"),
+            new TodoItem(6,"学习","学习数字图形","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 2, "番茄钟"),
+            new TodoItem(7,"学习","学习平面动画","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 3, "番茄钟"),
     };
     private ArrayList<TodoItem> todoItemArrayList = new ArrayList<>();
     private TodoItemAdapter todoItemAdapter;
@@ -142,31 +143,11 @@ public class ListActivity extends AppCompatActivity {
         popupWindow.setFocusable(true);
         //将窗口显示在父控件的指定位置
         popupWindow.showAtLocation(showView, Gravity.CENTER,0,0);
-        //找到控件
-        //final EditText userName = showView.findViewById(R.id.user);
-        //final EditText password = showView.findViewById(R.id.pass);
-        //final Toolbar toolbar = showView.findViewById(R.id.popup_toolbar);
-        //点击左边返回按钮监听事件
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-            }
-        });
-        //Button login = showView.findViewById(R.id.sure);
-//        login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(ListActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-//                popupWindow.dismiss();
-//            }
-//        });
         WindowManager.LayoutParams attributes = getWindow().getAttributes();
         //设置透明度
         attributes.alpha = 0.3f;
         //设置给Activity
         getWindow().setAttributes(attributes);
-
         //关闭PopupWindow的监听
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -176,6 +157,55 @@ public class ListActivity extends AppCompatActivity {
                 attributes.alpha = 1.0f;
                 //设置给Activity
                 getWindow().setAttributes(attributes);
+            }
+        });
+        //找到控件
+        final CheckBox radio1 = showView.findViewById(R.id.radio1);
+        final CheckBox radio2 = showView.findViewById(R.id.radio2);
+        final CheckBox radio3 = showView.findViewById(R.id.radio3);
+        final EditText etTitle = showView.findViewById(R.id.et_title);
+        final EditText etContent = showView.findViewById(R.id.et_content);
+        String type; final String title; final String content;
+        radio1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(radio2.isChecked() || radio3.isChecked()) {
+                    radio2.setChecked(false);
+                    radio3.setChecked(false);
+                }
+                radio1.setChecked(true);
+                System.out.println(radio1.getTag().toString());
+            }
+        });
+        radio2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(radio1.isChecked() || radio3.isChecked()) {
+                    radio1.setChecked(false);
+                    radio3.setChecked(false);
+                }
+                radio2.setChecked(true);
+                System.out.println(radio2.getTag().toString());
+            }
+        });
+        radio3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(radio1.isChecked() || radio2.isChecked()) {
+                    radio1.setChecked(false);
+                    radio2.setChecked(false);
+                }
+                radio3.setChecked(true);
+                System.out.println(radio3.getTag().toString());
+            }
+        });
+        //点击按钮返回按钮监听事件
+        Button sure = showView.findViewById(R.id.btn_newtodo_sure);
+        sure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ListActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                popupWindow.dismiss();
             }
         });
     }
@@ -243,37 +273,6 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.todo_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_clock:
-                Toast.makeText(this, "打卡", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_add:
-                Toast.makeText(this, "Add selected", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_rank:
-                Toast.makeText(this, "rank", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_datastatic:
-                Toast.makeText(this, "data", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_mode:
-                Toast.makeText(this, "mode", Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                break;
-        }
-        return true;
-    }
-
     public void inittheme() {
         Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);
         cursor.moveToNext();
@@ -305,17 +304,4 @@ public class ListActivity extends AppCompatActivity {
         cursor.close();
     }
 
-    /**
-     * 利用反射获取状态栏高度
-     * @return
-     */
-    public int getStatusBarHeight() {
-        int result = 0;
-        //获取状态栏高度的资源id
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
-    }
 }

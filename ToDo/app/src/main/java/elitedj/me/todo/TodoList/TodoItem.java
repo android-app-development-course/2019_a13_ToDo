@@ -12,6 +12,7 @@ public class TodoItem {
     private long timeStamp;  // 时间戳
     private int state;       // 状态
     private int priority;    // 优先级
+    private String type;     // 事务种类
 
     public TodoItem() {
 
@@ -21,7 +22,7 @@ public class TodoItem {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public TodoItem(int dayOfWeek, String title, String content, String icon, long timeStamp, int state, int priority) {
+    public TodoItem(int dayOfWeek, String title, String content, String icon, long timeStamp, int state, int priority, String type) {
         this.dayOfWeek = dayOfWeek;
         this.title = title;
         this.content = content;
@@ -29,6 +30,15 @@ public class TodoItem {
         this.timeStamp = timeStamp;
         this.state = state;
         this.priority = priority;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getDayOfWeek() {
@@ -101,7 +111,8 @@ public class TodoItem {
                 && (o.icon == icon || o.icon.equals(icon))
 //                && o.timeStamp == timeStamp
                 && o.dayOfWeek == dayOfWeek
-                && o.priority == priority)
+                && o.priority == priority
+                && o.type == type)
             return true;
         return false;
     }
@@ -117,6 +128,7 @@ public class TodoItem {
         entity.timeStamp = timeStamp;
         entity.state = state;
         entity.priority = priority;
+        entity.type = type;
         return entity;
     }
 
@@ -128,6 +140,7 @@ public class TodoItem {
         entity.timeStamp = timeStamp;
         entity.state = state;
         entity.priority = priority;
+        entity.type = type;
         return entity;
     }
 
@@ -140,6 +153,7 @@ public class TodoItem {
         this.state = e.state;
         this.priority = e.priority;
         this.dayOfWeek = e.dayOfWeek;
+        this.type = e.type;
     }
 
 
@@ -153,6 +167,7 @@ public class TodoItem {
                 ", timeStamp=" + timeStamp +
                 ", state=" + state +
                 ", priority=" + priority +
+                ", type" + type +
                 '}';
     }
 }
