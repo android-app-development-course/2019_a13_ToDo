@@ -44,7 +44,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:text="asdgasdgasdgasdgasdgasdgasdgasdg"/>
+                android:text="asdgasdgasdgasdgasdgasdgasdgasdg"
+                android:layout_marginRight="10dp"/>
 
             <com.lzy.ninegrid.NineGridView
                 android:id="@+id/ninePic"

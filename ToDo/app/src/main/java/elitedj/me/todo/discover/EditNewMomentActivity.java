@@ -33,7 +33,10 @@ import java.util.ArrayList;
 
 import javax.security.auth.login.LoginException;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import elitedj.me.todo.R;
+import elitedj.me.todo.bean.User;
 import elitedj.me.todo.me.Setting;
 import elitedj.me.todo.me.SettingDB;
 import me.nereo.multi_image_selector.MultiImageSelector;
@@ -71,6 +74,8 @@ public class EditNewMomentActivity extends AppCompatActivity {
 //            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
 //            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
 //        }
+
+        Bmob.initialize(this, "270e4c5889c9b50d64c82ef459cbcee4");
 
         setToolBar();
 
@@ -180,8 +185,23 @@ public class EditNewMomentActivity extends AppCompatActivity {
     // 发布功能
     public void postFun() {
         if(!content.getText().toString().equals("")) {
+            Moment m = new Moment();
+            BmobUser user = BmobUser.getCurrentUser(User.class);
+            m.setName(((User) user).getNickName());
+            m.setContent(content.getText().toString());
+            ArrayList<Picture> p = new ArrayList<>();
+            imagePaths.remove("addPic");
+            for(String s : imagePaths) {
+                Picture picture = new Picture(s);
+                p.add(picture);
+            }
+            m.setPictures(p);
+            m.setFace("http://photocdn.sohu.com/20131128/Img390959345.jpg");
+            Intent intent = new Intent();
+            intent.putExtra("newMoment", m);
+            this.setResult(1, intent);
             Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show();
-            finish();
+            this.finish();
         }
         else {
             Toast.makeText(this, "内容不能为空", Toast.LENGTH_SHORT).show();

@@ -14,6 +14,7 @@ import com.lzy.ninegrid.NineGridView;
 import com.lzy.ninegrid.preview.NineGridViewClickAdapter;
 import com.varunest.sparkbutton.SparkButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import elitedj.me.todo.R;
@@ -65,6 +66,11 @@ public class MomentListAdapter extends RecyclerView.Adapter<MomentListAdapter.Vi
             imageInfos.add(imageInfo);
         }
         holder.nineGridView.setAdapter(new NineGridViewClickAdapter(context, imageInfos));
+    }
+
+    public void addItem(int position, Moment moment) {
+        moments.add(position, moment);
+        notifyItemInserted(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

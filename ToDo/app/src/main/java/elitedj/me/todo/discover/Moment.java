@@ -1,8 +1,9 @@
 package elitedj.me.todo.discover;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Moment {
+public class Moment implements Serializable {
     private String face;
     private String name;
     private String content;

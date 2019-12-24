@@ -1,6 +1,8 @@
 package elitedj.me.todo.discover;
 
-public class Picture {
+import java.io.Serializable;
+
+public class Picture implements Serializable {
     private String uri;
 
     public Picture(String uri) {

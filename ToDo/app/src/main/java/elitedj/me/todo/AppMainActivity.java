@@ -1,5 +1,6 @@
 package elitedj.me.todo;
 
+import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +10,9 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +33,8 @@ import elitedj.me.todo.TodoList.ListActivity;
 import elitedj.me.todo.datastatic.DataStaticActivity;
 import elitedj.me.todo.discover.DiscoverActivity;
 import elitedj.me.todo.discover.ImageLoader;
+import elitedj.me.todo.discover.Moment;
+import elitedj.me.todo.discover.MomentListAdapter;
 import elitedj.me.todo.me.MeActivity;
 import elitedj.me.todo.me.Setting;
 import elitedj.me.todo.me.SettingDB;
@@ -150,6 +156,25 @@ public class AppMainActivity extends AppCompatActivity {
         {
             container.addView(views.get(position));
             return views.get(position);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //1--->是处理新的朋友圈
+        switch (resultCode) {
+            case 1:
+                Log.e("--->", "1111111111111111111111", null);
+                RecyclerView recyclerView = discoverView.findViewById(R.id.momentlist);
+                MomentListAdapter momentListAdapter = (MomentListAdapter) recyclerView.getAdapter();
+                Moment moment = (Moment) data.getSerializableExtra("newMoment");
+                momentListAdapter.addItem(0, moment);
+//                LinearLayoutManager lm = (LinearLayoutManager) recyclerView.getLayoutManager();
+//                lm.scrollToPosition(0);
+                recyclerView.scrollToPosition(0);
+                break;
+
+                default:break;
         }
     }
 
