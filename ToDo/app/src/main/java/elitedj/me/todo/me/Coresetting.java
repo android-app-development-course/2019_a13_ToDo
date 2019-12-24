@@ -87,9 +87,9 @@ public class Coresetting extends AppCompatActivity {
 //        values.put("break_time","3分钟");
 //        values.put("break_cnt",5);
 //        values.put("language",1);
-        // String sql= "INSERT INTO Setting (_id, theme,lszd,music,resttime,geyan,xianshi,changliang,break_time,break_cnt,language) VALUES(1,1,1,'asd','5分钟','ALL IS WELL',1,0,'3分钟',5,1)";
-
-        //dbread.execSQL(sql);
+//         String sql= "INSERT INTO Setting (_id, theme,lszd,music,resttime,geyan,xianshi,changliang,break_time,break_cnt,language) VALUES(1,1,1,'asd','5分钟','ALL IS WELL',1,0,'3分钟',5,1)";
+//
+//        dbread.execSQL(sql);
         //dbw.insert("Setting",null,values);
         //  dbread.execSQL("delete from Setting");
         //dbw.close();

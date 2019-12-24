@@ -10,6 +10,7 @@
         android:id="@+id/calendar_view"
         android:layout_width="366dp"
         android:layout_height="329dp"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

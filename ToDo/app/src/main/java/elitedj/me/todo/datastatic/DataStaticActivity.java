@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,8 @@ public class DataStaticActivity extends AppCompatActivity {
         values.add(new PointValue(5, 1));
         values.add(new PointValue(6, 9));
 
-        Line line = new Line(values).setColor(getResources().getColor(R.color.blue)).setCubic(true).setHasLabels(true).setStrokeWidth(2);
+
+        Line line = new Line(values).setColor(R.color.white).setCubic(true).setHasLabels(true).setStrokeWidth(2);
         List<Line> lines = new ArrayList<>();
         lines.add(line);
 
@@ -70,7 +72,10 @@ public class DataStaticActivity extends AppCompatActivity {
         Axis axisY = new Axis().setHasLines(true);
         axisX.setName("日期");
         axisY.setName("使用小时(h)");
-
+        axisX.setLineColor(R.color.white);
+        axisX.setTextColor(R.color.white);
+        axisY.setLineColor(R.color.white);
+        axisY.setTextColor(R.color.white);
         data.setAxisXBottom(axisX);
         data.setAxisYLeft(axisY);
 
@@ -83,17 +88,20 @@ public class DataStaticActivity extends AppCompatActivity {
         barChart = findViewById(R.id.barChart);
 
         List<SubcolumnValue> subcolumnValues = new ArrayList<>();
-        subcolumnValues.add(new SubcolumnValue(1, getResources().getColor(R.color.blue)));
-        subcolumnValues.add(new SubcolumnValue(5, getResources().getColor(R.color.blue)));
-        subcolumnValues.add(new SubcolumnValue(2, getResources().getColor(R.color.blue)));
-        subcolumnValues.add(new SubcolumnValue(9, getResources().getColor(R.color.blue)));
-        subcolumnValues.add(new SubcolumnValue(11, getResources().getColor(R.color.blue)));
-        subcolumnValues.add(new SubcolumnValue(5, getResources().getColor(R.color.blue)));
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        subcolumnValues.add(new SubcolumnValue(1,getResources().getColor(R.color.white)));
+        subcolumnValues.add(new SubcolumnValue(5,getResources().getColor(R.color.white)));
+        subcolumnValues.add(new SubcolumnValue(2,getResources().getColor(R.color.white)));
+        subcolumnValues.add(new SubcolumnValue(9,getResources().getColor(R.color.white)));
+        subcolumnValues.add(new SubcolumnValue(11,getResources().getColor(R.color.white)));
+        subcolumnValues.add(new SubcolumnValue(5,getResources().getColor(R.color.white)));
 
         List<Column> columns = new ArrayList<>();
         columns.add(new Column(subcolumnValues));
         ColumnChartData data = new ColumnChartData();
         data.setColumns(columns);
+        data.setValueLabelBackgroundColor(R.attr.colorPrimary);
 
         ArrayList<AxisValue> xValues = new ArrayList<>();
         for(int i=1;i<=12;i++) {
@@ -104,6 +112,10 @@ public class DataStaticActivity extends AppCompatActivity {
         Axis axisY = new Axis().setHasLines(true);
         axisX.setName("月份");
         axisY.setName("使用天数");
+        axisX.setLineColor(R.color.white);
+        axisX.setTextColor(R.color.white);
+        axisY.setLineColor(R.color.white);
+        axisY.setTextColor(R.color.white);
 
         data.setAxisXBottom(axisX);
         data.setAxisYLeft(axisY);
