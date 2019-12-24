@@ -1,6 +1,8 @@
 package elitedj.me.todo.me;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,15 +27,37 @@ public  class MeActivity extends AppCompatActivity implements AdapterView.OnItem
 
     private ListView lv1;
     private ImageView touxiang;
+    private SettingDB DB;
+    private PersonDB PDB;
+    private TextView usename;
+    private SQLiteDatabase dbread,dread2;
+    private Setting set;
     private static String path = "/sdcard/myHead/";// sd路径
-
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        PDB = new PersonDB(this);
+        dread2 = PDB.getReadableDatabase();
+
+        DB = new SettingDB(this);
+        dbread = DB.getReadableDatabase();
+        set = new Setting();
+
+        inittheme();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me);
+
+        usename = (TextView) findViewById(R.id.usern);
+        Cursor cursor1 = dread2.query("Person", null, null, null, null,null, null);
+
+        cursor1.moveToNext();
+        String name = cursor1.getString(cursor1.getColumnIndex("name"));
+
+        usename.setText(name);
+
         LayoutInflater inflater = getLayoutInflater();
 
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(MeActivity.this,android.R.layout.simple_list_item_1,data);//新建并配置ArrayAapeter
@@ -118,5 +142,35 @@ public  class MeActivity extends AppCompatActivity implements AdapterView.OnItem
         //Toast.makeText(this, showText, Toast.LENGTH_LONG).show();
     }
 
+    public void inittheme() {
+        Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);
 
+        cursor.moveToNext();
+        set.setTheme(cursor.getInt(cursor.getColumnIndex("theme")));
+        switch (set.getTheme())
+        {
+            case 0:
+                setTheme(R.style.GreenAppTheme);
+                break;
+            case 1:
+                setTheme(R.style.BlueAppTheme);
+                break;
+            case 2:
+                setTheme(R.style.PurpleAppTheme);
+                break;
+            case 3:
+                setTheme(R.style.BronzeAppTheme);
+                break;
+            case 4:
+                setTheme(R.style.PinkAppTheme);
+                break;
+            case 5:
+                setTheme(R.style.OrAppTheme);
+                break;
+
+            default:
+                break;
+        }
+        cursor.close();
+    }
 }

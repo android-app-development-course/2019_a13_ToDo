@@ -50,6 +50,7 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
     private	String[] names={"蔡徐坤","男","1999-07-30","842184122@qq.com","13268453217","SCNU","退出登录"};
     private String[] contents={"更改昵称","更改性别","更改生日","更改邮箱","更改电话","更改学校","退出该账号"};
     private	String[] listdb={"name","sex","birth","email","tel","school","out"};
+    private TextView usename;
     private MyBaseAdapter mAdapter;
     private PersonDB DB;
     private SQLiteDatabase dbread;
@@ -68,6 +69,7 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
         lv1.setAdapter(mAdapter);
         Log.d("my","asd");
         lv1.setOnItemClickListener(Myinfo.this);
+        usename = findViewById(R.id.username1);
         //创建新的列时要删除一下数据库
         //this.deleteDatabase("Person");
         DB = new PersonDB(this);
@@ -252,7 +254,9 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
             String tel = cursor.getString(cursor.getColumnIndex("tel"));
             String school = cursor.getString(cursor.getColumnIndex("school"));
             //Map<String, Object> map = new HashMap<String, Object>();
+
             names[0] = name;
+            usename.setText(name);
             names[1] = sex;
             names[2] = birth;
             names[3] = email;
