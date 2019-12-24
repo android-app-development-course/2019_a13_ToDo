@@ -59,6 +59,7 @@ dependencies {
     implementation 'com.github.shixiuwen:colorpicker:v1.0.3'    //取色器
     implementation 'com.jakewharton:butterknife:9.0.0'  // 使用Butterknife可以避免大量的findViewById,setOnClickListener等查找View、绑定事件的代码
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
+    implementation 'com.github.rey5137:material:1.2.4' // Material slider
 
     implementation 'cn.bmob.android:bmob-sdk:3.7.3-rc1'//bmob
     implementation "io.reactivex.rxjava2:rxjava:2.2.2"

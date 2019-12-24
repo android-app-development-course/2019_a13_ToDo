@@ -4,27 +4,30 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import elitedj.me.todo.R;
+import elitedj.me.todo.R2;
 import elitedj.me.todo.me.Setting;
 import elitedj.me.todo.me.SettingDB;
 import elitedj.me.todo.utils.CommonUtil;
 
 public class NewTodoActivity extends AppCompatActivity {
 
-    @BindViews({R.id.radio1, R.id.radio2, R.id.radio3})
+    @BindViews({R2.id.radio1, R2.id.radio2, R2.id.radio3})
     List<CheckBox> radios; // 单选组
-
 
     private SettingDB DB;
     private SQLiteDatabase dbread;
@@ -52,14 +55,14 @@ public class NewTodoActivity extends AppCompatActivity {
      * 单选项点击事件
      * @param checkBox
      */
-    @OnClick({R.id.radio1, R.id.radio2, R.id.radio3})
+    @OnClick({R2.id.radio1, R2.id.radio2, R2.id.radio3})
     void changeRadios(CheckBox checkBox) {
         CommonUtil.unCheck(radios);
         checkBox.setChecked(true);
 
         // 显示选中项值
         String checkedValues = CommonUtil.getOne(radios);
-        Toast.makeText(this, "选中了：" + checkedValues, Toast.LENGTH_SHORT).show();
+        System.out.println("选中了：" + checkedValues);
     }
 
 //    /**

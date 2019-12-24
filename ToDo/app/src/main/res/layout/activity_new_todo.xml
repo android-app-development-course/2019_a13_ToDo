@@ -46,68 +46,51 @@
             android:paddingLeft="15dp"
             android:paddingTop="0dp"
             android:background="@color/white"
-            android:clickable="true"
-            >
+            android:clickable="true" >
 
-            <CheckBox
-                android:id="@+id/radio1"
-                style="@style/select_style"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="60dp"
-                android:tag="rd1"
-                android:text="单选1" />
-
-            <CheckBox
-                android:id="@+id/radio2"
-                style="@style/select_style"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="150dp"
-                android:tag="rd2"
-                android:text="单选2" />
-
-            <CheckBox
-                android:id="@+id/radio3"
-                style="@style/select_style"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="240dp"
-                android:tag="rd3"
-                android:text="单选3" />
-
-            <!--
             <ImageView
-                android:id="@+id/imageling"
+                android:id="@+id/imageType"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/lingsheng" />
+                android:src="@drawable/todotype" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/imageType"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="6dp"
-                android:layout_toRightOf="@id/imageling"
-                android:text="铃声震动设置"
-                android:textColor="#000000"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@id/imageling"
-                android:text="开启或关闭铃声震动"
-                android:textColor="#616060"
-                android:textSize="12sp"
-                android:typeface="serif" />
-                -->
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/radio1"
+                    style="@style/select_style"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:tag="rd1"
+                    android:text="番茄钟" />
+
+                <CheckBox
+                    android:id="@+id/radio2"
+                    style="@style/select_style"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:tag="rd2"
+                    android:text="养习惯" />
+
+                <CheckBox
+                    android:id="@+id/radio3"
+                    style="@style/select_style"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:tag="rd3"
+                    android:text="目标" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
@@ -123,14 +106,95 @@
             >
 
             <ImageView
-                android:id="@+id/imagemusic"
+                android:id="@+id/imagetitle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/todotitle" />
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_toRightOf="@id/imagetitle"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_edit_bg"
+                android:maxLines="1"
+                android:maxLength="30"
+                android:inputType="text"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:hint="请输入事件名称"
+                android:textStyle="bold"
+                android:typeface="serif"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/R3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="1dp"
+            android:background="@color/white"
+            android:focusable="true"
+            android:clickable="true"
+            android:descendantFocusability ="beforeDescendants"
+            >
+
+            <ImageView
+                android:id="@+id/imagetime"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/time" />
+
+            <!-- use Material.Widget.Slider.Discrete style for discrete mode -->
+            <com.rey.material.widget.Slider
+                style="@style/Material.Widget.Slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_toRightOf="@id/imagetime"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                app:sl_minValue="5"
+                app:sl_maxValue="180"
+                app:sl_stepValue="5"
+                app:sl_value="30"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/R4"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="1dp"
+            android:background="@color/white"
+            android:focusable="true"
+            android:clickable="true"
+            >
+
+            <ImageView
+                android:id="@+id/imagemgeyan"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/music" />
+                android:src="@drawable/geyan" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,8 +202,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="6dp"
-                android:layout_toRightOf="@id/imagemusic"
-                android:text="默认背景音乐 | 背景白噪声"
+                android:layout_toRightOf="@id/imagemgeyan"
+                android:text="自定义番茄格言"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -150,15 +214,57 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="35dp"
-                android:layout_toRightOf="@id/imagemusic"
-                android:text="激昂澎湃的音乐让您更加高效"
+                android:layout_toRightOf="@id/imagemgeyan"
+                android:text="格言会展示在计时或锁机页面上的喔~~"
                 android:textColor="#616060"
                 android:textSize="12sp"
                 android:typeface="serif" />
 
+            <EditText
+                android:id="@+id/et_content"
+                android:layout_toRightOf="@id/imagemgeyan"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_edit_bg"
+                android:maxLines="1"
+                android:maxLength="30"
+                android:inputType="text"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="16dp"
+                android:textColor="#1f2124"
+                android:textColorHint="#1f2124"
+                android:textSize="12sp"
+                android:hint="请输入具体事务"
+                android:textStyle="bold"
+                android:typeface="serif"/>
+
+
+
         </RelativeLayout>
+
         <RelativeLayout
-            android:id="@+id/R3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="高级设置"
+                android:textColor="#008577"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="serif" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/R5"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="1dp"
@@ -209,73 +315,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/R4"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="1dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="1dp"
-            android:background="@color/white"
-            android:focusable="true"
-            android:clickable="true"
-            >
-
-            <ImageView
-                android:id="@+id/imagemgeyan"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/geyan" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="6dp"
-                android:layout_toRightOf="@id/imagemgeyan"
-                android:text="自定义番茄格言"
-                android:textColor="#000000"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="35dp"
-                android:layout_toRightOf="@id/imagemgeyan"
-                android:text="格言会展示在计时或锁机页面上的喔~~"
-                android:textColor="#616060"
-                android:textSize="12sp"
-                android:typeface="serif" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingLeft="15dp"
-            android:layout_marginTop="1dp"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="高级设置"
-                android:textColor="#008577"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/R5"
+            android:id="@+id/R6"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="15dp"
@@ -318,7 +358,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/R6"
+            android:id="@+id/R7"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="15dp"
@@ -351,7 +391,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/R7"
+            android:id="@+id/R8"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="1dp"
@@ -389,7 +429,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/R8"
+            android:id="@+id/R9"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="1dp"
@@ -492,7 +532,6 @@
 
 
 </ScrollView>
-
 <!--
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
