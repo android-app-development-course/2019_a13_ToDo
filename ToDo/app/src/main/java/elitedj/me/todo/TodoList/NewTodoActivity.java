@@ -6,14 +6,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
+import butterknife.BindViews;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import elitedj.me.todo.R;
 import elitedj.me.todo.me.Setting;
 import elitedj.me.todo.me.SettingDB;
+import elitedj.me.todo.utils.CommonUtil;
 
 public class NewTodoActivity extends AppCompatActivity {
+
+    @BindViews({R.id.radio1, R.id.radio2, R.id.radio3})
+    List<CheckBox> radios; // 单选组
 
 
     private SettingDB DB;
@@ -30,7 +40,39 @@ public class NewTodoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_todo);
 
+        ButterKnife.bind(this);
+
+        // 如果有初始状态需要显示，参见：
+        // com.dommy.selectcustom.util.CommonUtil.checkOne()
+        // com.dommy.selectcustom.util.CommonUtil.checkMany()
+
     }
+
+    /**
+     * 单选项点击事件
+     * @param checkBox
+     */
+    @OnClick({R.id.radio1, R.id.radio2, R.id.radio3})
+    void changeRadios(CheckBox checkBox) {
+        CommonUtil.unCheck(radios);
+        checkBox.setChecked(true);
+
+        // 显示选中项值
+        String checkedValues = CommonUtil.getOne(radios);
+        Toast.makeText(this, "选中了：" + checkedValues, Toast.LENGTH_SHORT).show();
+    }
+
+//    /**
+//     * 复选项点击事件
+//     * @param checkBox
+//     */
+//    @OnClick({R.id.checkbox1, R.id.checkbox2, R.id.checkbox3, R.id.checkbox4, R.id.checkbox5, R.id.checkbox6, R.id.checkbox7})
+//    void changeCheckBoxs(CheckBox checkBox) {
+//        // 显示选中项值
+//        String checkedValues = CommonUtil.getMany(checkBoxes);
+//        tvValue.setText("选中了：" + checkedValues);
+//    }
+
 
     public void inittheme() {
         Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);

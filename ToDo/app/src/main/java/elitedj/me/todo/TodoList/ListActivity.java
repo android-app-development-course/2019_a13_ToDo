@@ -122,7 +122,8 @@ public class ListActivity extends AppCompatActivity {
      */
     public void newTodo() {
         //实例化对象
-        final PopupWindow popupWindow = new PopupWindow(ListActivity.this);
+        final PopupWindow  popupWindow = new PopupWindow(getLayoutInflater().inflate(R.layout.activity_new_todo, null), WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        //final PopupWindow popupWindow = new PopupWindow(ListActivity.this);
         //获得要显示的视图
         View showView = ListActivity.this.getLayoutInflater().inflate(R.layout.activity_new_todo, null);
         //intentNewTodo = new Intent(TodoListActivity.this, NewTodoActivity.class);
@@ -142,9 +143,9 @@ public class ListActivity extends AppCompatActivity {
         //将窗口显示在父控件的指定位置
         popupWindow.showAtLocation(showView, Gravity.CENTER,0,0);
         //找到控件
-        final EditText userName = showView.findViewById(R.id.user);
-        final EditText password = showView.findViewById(R.id.pass);
-        final Toolbar toolbar = showView.findViewById(R.id.popup_toolbar);
+        //final EditText userName = showView.findViewById(R.id.user);
+        //final EditText password = showView.findViewById(R.id.pass);
+        //final Toolbar toolbar = showView.findViewById(R.id.popup_toolbar);
         //点击左边返回按钮监听事件
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,14 +153,14 @@ public class ListActivity extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
-        Button login = showView.findViewById(R.id.sure);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ListActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-                popupWindow.dismiss();
-            }
-        });
+        //Button login = showView.findViewById(R.id.sure);
+//        login.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(ListActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+//                popupWindow.dismiss();
+//            }
+//        });
         WindowManager.LayoutParams attributes = getWindow().getAttributes();
         //设置透明度
         attributes.alpha = 0.3f;
@@ -302,5 +303,19 @@ public class ListActivity extends AppCompatActivity {
                 break;
         }
         cursor.close();
+    }
+
+    /**
+     * 利用反射获取状态栏高度
+     * @return
+     */
+    public int getStatusBarHeight() {
+        int result = 0;
+        //获取状态栏高度的资源id
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 }
