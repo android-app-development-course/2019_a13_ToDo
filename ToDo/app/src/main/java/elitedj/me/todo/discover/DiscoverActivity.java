@@ -57,6 +57,8 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover);
 
+        Bmob.initialize(this, "270e4c5889c9b50d64c82ef459cbcee4");
+
         discoverViewInit();
 
     }
@@ -129,7 +131,7 @@ public class DiscoverActivity extends AppCompatActivity implements View.OnClickL
         momentList = findViewById(R.id.momentlist);
         for(int i=1;i<=9;i++){
             Moment moment = new Moment();
-            moment.setFace(R.drawable.img3);
+            moment.setFace("https://c-ssl.duitang.com/uploads/item/201706/25/20170625143749_mtSZE.thumb.700_0.jpeg");
             moment.setName("小"+(char)(i+'A'-1));
             moment.setContent("ajsdfhajklsdghlasdkghasjkldghasjkgadfgdfh");
             ArrayList<Picture> pictures = new ArrayList<>();

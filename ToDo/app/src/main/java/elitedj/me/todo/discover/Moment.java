@@ -3,12 +3,12 @@ package elitedj.me.todo.discover;
 import java.util.ArrayList;
 
 public class Moment {
-    private int face;
+    private String face;
     private String name;
     private String content;
     private ArrayList<Picture> pictures;
 
-    public void setFace(int face) {
+    public void setFace(String face) {
         this.face = face;
     }
 
@@ -24,7 +24,7 @@ public class Moment {
         this.pictures = pictures;
     }
 
-    public int getFace() {
+    public String getFace() {
         return face;
     }
 

@@ -111,36 +111,36 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             //获取sd卡目录
             String sdcard = Environment.getExternalStorageDirectory().toString();
             //存储头像的文件夹地址
-//            File f = new File(sdcard+"/ToDo");
-//            if(!f.exists()) {
-//                f.mkdirs();
-//            }
-//            //文件名
-//            String fn = username.getText().toString()+"Default_face.png";
-//            //文件路径
-//            String path = sdcard+"/ToDo/"+fn;
-//            //通过文件流保存图片到手机内存
-//            try {
-//                OutputStream os = new FileOutputStream(path);
-//                img.compress(Bitmap.CompressFormat.PNG, 100, os);
-//                os.close();
-//            }catch (Exception e) {
-//                Log.e("--->", "registerFun: "+e, null);
-//            }
-//            Log.e("--->", "registerFun: "+path, null);
-//            bu.setFace(new BmobFile(new File(path)));
-//            BmobFile bf = bu.getFace();
-//            //上传头像
-//            bf.uploadblock(new UploadFileListener() {
-//                @Override
-//                public void done(BmobException e) {
-//                    if(e==null) {
-//                        Log.e("--->", "register face upload success", null);
-//                    } else {
-//                        Log.e("--->", "register face upload fail:"+e, null);
-//                    }
-//                }
-//            });
+            File f = new File(sdcard+"/ToDo");
+            if(!f.exists()) {
+                f.mkdirs();
+            }
+            //文件名
+            String fn = username.getText().toString()+"Default_face.png";
+            //文件路径
+            String path = sdcard+"/ToDo/"+fn;
+            //通过文件流保存图片到手机内存
+            try {
+                OutputStream os = new FileOutputStream(path);
+                img.compress(Bitmap.CompressFormat.PNG, 100, os);
+                os.close();
+            }catch (Exception e) {
+                Log.e("--->", "registerFun: "+e, null);
+            }
+            Log.e("--->", "registerFun: "+path, null);
+            bu.setFace(new BmobFile(username.getText().toString()+"Default_face", "", path));
+            BmobFile bf = bu.getFace();
+            //上传头像
+            bf.uploadblock(new UploadFileListener() {
+                @Override
+                public void done(BmobException e) {
+                    if(e==null) {
+                        Log.e("--->", "register face upload success", null);
+                    } else {
+                        Log.e("--->", "register face upload fail:"+e, null);
+                    }
+                }
+            });
             //注册
             bu.signUp(new SaveListener<User>() {
                 @Override

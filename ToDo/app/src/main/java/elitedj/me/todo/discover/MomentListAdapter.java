@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.github.siyamed.shapeimageview.RoundedImageView;
 import com.lzy.ninegrid.ImageInfo;
 import com.lzy.ninegrid.NineGridView;
@@ -46,7 +48,10 @@ public class MomentListAdapter extends RecyclerView.Adapter<MomentListAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Moment moment = moments.get(position);
-        holder.face.setImageResource(moment.getFace());
+        Glide.with(context)
+                .load(moment.getFace())
+                .asBitmap()
+                .into(holder.face);
         holder.friendname.setText(moment.getName());
         holder.content.setText(moment.getContent());
         holder.like.setChecked(false);
