@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import elitedj.me.todo.R;
 import elitedj.me.todo.me.Setting;
@@ -44,6 +45,10 @@ public class ListActivity extends AppCompatActivity {
             new TodoItem(6,"学习","学习数字图形","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 2, "番茄钟"),
             new TodoItem(7,"学习","学习平面动画","aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 3, "番茄钟"),
     };
+    private TodoItem newTodoItem;  // 新建todo
+    private String todoType;
+    private String todoTitle;
+    private String todoContent;
     private ArrayList<TodoItem> todoItemArrayList = new ArrayList<>();
     private TodoItemAdapter todoItemAdapter;
     private TaskAdapter taskAdapter;
@@ -99,7 +104,7 @@ public class ListActivity extends AppCompatActivity {
                         clickIn();
                         break;
                     case R.id.action_add:
-                        newTodo();
+                        newTodoView();
                         break;
                     case R.id.action_rank:
                         Toast.makeText(ListActivity.this, "rank", Toast.LENGTH_SHORT).show();
@@ -121,7 +126,7 @@ public class ListActivity extends AppCompatActivity {
     /**
      * 添加弹窗
      */
-    public void newTodo() {
+    public void newTodoView() {
         //实例化对象
         final PopupWindow  popupWindow = new PopupWindow(getLayoutInflater().inflate(R.layout.activity_new_todo, null), WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
         //final PopupWindow popupWindow = new PopupWindow(ListActivity.this);
@@ -165,7 +170,6 @@ public class ListActivity extends AppCompatActivity {
         final CheckBox radio3 = showView.findViewById(R.id.radio3);
         final EditText etTitle = showView.findViewById(R.id.et_title);
         final EditText etContent = showView.findViewById(R.id.et_content);
-        String type; final String title; final String content;
         radio1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,15 +203,42 @@ public class ListActivity extends AppCompatActivity {
                 System.out.println(radio3.getTag().toString());
             }
         });
+        todoTitle = etTitle.getText().toString();
         //点击按钮返回按钮监听事件
         Button sure = showView.findViewById(R.id.btn_newtodo_sure);
         sure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                newTodo(showView);
                 Toast.makeText(ListActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
                 popupWindow.dismiss();
             }
         });
+    }
+
+    public void newTodo(View showView)
+    {
+        CheckBox radio1 = showView.findViewById(R.id.radio1);
+        CheckBox radio2 = showView.findViewById(R.id.radio2);
+        CheckBox radio3 = showView.findViewById(R.id.radio3);
+        EditText etTitle = showView.findViewById(R.id.et_title);
+        EditText etContent = showView.findViewById(R.id.et_content);
+
+        todoTitle = etTitle.getText().toString();
+        todoContent = etContent.getText().toString();
+
+        if(radio1.isChecked()) todoType = radio1.getTag().toString();
+        else if(radio2.isChecked()) todoType = radio2.getTag().toString();
+        else todoType = radio3.getTag().toString();
+
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        newTodoItem = new TodoItem(calendar.get(Calendar.DAY_OF_WEEK), todoTitle, todoContent, "aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 0, todoType);
+        todoItemArrayList.add(newTodoItem);
+        System.out.println(todoItemArrayList.size());
+        taskAdapter = new TaskAdapter(this, todoItemArrayList);
+        todolistview.setAdapter(taskAdapter);
     }
 
     /**
