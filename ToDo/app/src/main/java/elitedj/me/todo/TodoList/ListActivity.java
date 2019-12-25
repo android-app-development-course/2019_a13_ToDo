@@ -79,6 +79,18 @@ public class ListActivity extends AppCompatActivity {
         //todoItemAdapter = new TodoItemAdapter(this, todoItemArrayList, getLayoutInflater());
         //todolistview.setAdapter(todoItemAdapter);
         taskAdapter = new TaskAdapter(this, todoItemArrayList);
+//        taskAdapter.setOnItemClickListener(new TaskAdapter.OnItemClickListener() {
+//            @Override
+//            public void onClick(int position) {
+//                Toast.makeText(ListActivity.this, "click " + position, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        taskAdapter.setOnItemLongClickListener(new TaskAdapter.OnItemLongClickListener() {
+//            @Override
+//            public void onClick(int position) {
+//                Toast.makeText(ListActivity.this, "long click " + position, Toast.LENGTH_SHORT).show();
+//            }
+//        });
         todolistview.setAdapter(taskAdapter);
     }
 
@@ -216,6 +228,7 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
+    // todo 待改进，性能太差
     public void newTodo(View showView)
     {
         CheckBox radio1 = showView.findViewById(R.id.radio1);
@@ -237,6 +250,7 @@ public class ListActivity extends AppCompatActivity {
         newTodoItem = new TodoItem(calendar.get(Calendar.DAY_OF_WEEK), todoTitle, todoContent, "aaa", Calendar.getInstance().getTimeInMillis(), TaskState.DEFAULT, 0, todoType);
         todoItemArrayList.add(newTodoItem);
         System.out.println(todoItemArrayList.size());
+        // todo 待改进，性能太差
         taskAdapter = new TaskAdapter(this, todoItemArrayList);
         todolistview.setAdapter(taskAdapter);
     }

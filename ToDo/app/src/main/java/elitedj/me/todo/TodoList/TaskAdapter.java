@@ -49,6 +49,25 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         ViewHolder h = (ViewHolder) viewHolder;
         TodoItem entity = mList.get(i);
         h.setView(entity);
+
+//        h.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (listener != null) {
+//                    listener.onClick(i);
+//                }
+//            }
+//        });
+//
+//        h.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                if (longClickListener != null) {
+//                    longClickListener.onClick(i);
+//                }
+//                return true;
+//            }
+//        });
     }
 
     @Override
@@ -110,5 +129,28 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             else
                 mLlTaskFinishedMask.setVisibility(View.INVISIBLE);
         }
+    }
+
+    //第一步 定义接口
+    public interface OnItemClickListener {
+        void onClick(int position);
+    }
+
+    private OnItemClickListener listener;
+
+    //第二步， 写一个公共的方法
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+
+    public interface OnItemLongClickListener {
+        void onClick(int position);
+    }
+
+    private OnItemLongClickListener longClickListener;
+
+    public void setOnItemLongClickListener(OnItemLongClickListener longClickListener) {
+        this.longClickListener = longClickListener;
     }
 }
