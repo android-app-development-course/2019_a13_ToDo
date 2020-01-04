@@ -71,27 +71,19 @@ public class AppMainActivity extends AppCompatActivity {
         set = new Setting();
 
         if(BmobUser.isLogin()) {
+            Cursor cursor = dread2.query("Person", null, null, null, null,null, null);
+            int count = cursor.getCount();
+            if(count==0)
+            {
+                creatPerson();
+            }
             //获取登录用户
             user = BmobUser.getCurrentUser(User.class);
             //设置nickName
             String sql = "update Person set name = '"+ user.getNickName()+"'";
             dread2.execSQL(sql);
         }
-//        ContentValues values = new ContentValues();
-//        values.put("_id",1);
-//        values.put("theme",1);
-//        values.put("lszd",1);
-//        values.put("music","sdsad");
-//        values.put("resttime","5分钟");
-//        values.put("geyan","ALL IS WELL");
-//        values.put("xianshi",1);
-//        values.put("changliang",2);
-//        values.put("break_time","3分钟");
-//        values.put("break_cnt",5);
-//        values.put("language",1);
-//        String sql= "INSERT INTO Setting (_id, theme,lszd,music,resttime,geyan,xianshi,changliang,break_time,break_cnt,language) VALUES(1,1,1,'asd','5分钟','ALL IS WELL',1,0,'3分钟',5,1)";
-//
-//        dbread.execSQL(sql);
+
         inittheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_main);
@@ -225,6 +217,21 @@ public class AppMainActivity extends AppCompatActivity {
                 break;
         }
         cursor.close();
+    }
+
+    private void creatPerson()
+    {
+                ContentValues values = new ContentValues();
+        values.put("_id",1);
+        values.put("name","皇子吧");
+        values.put("sex","男");
+        values.put("birth","");
+        values.put("email","");
+        values.put("tel","");
+        values.put("school","");
+        values.put("out","退出登录");
+        dread2.insert("Person",null,values);
+
     }
 
 
