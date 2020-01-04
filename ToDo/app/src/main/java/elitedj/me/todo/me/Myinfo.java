@@ -53,14 +53,20 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
     private TextView usename;
     private MyBaseAdapter mAdapter;
     private PersonDB DB;
-    private SQLiteDatabase dbread;
+    private SettingDB SDB;
+    private SQLiteDatabase dbread,dread2;
     private SQLiteDatabase dbw;
     private ImageView touxiang,touxiang2;
+    private Setting set;
     private Bitmap head;// 头像Bitmap
     private static String path = "/sdcard/myHead/";// sd路径
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SDB = new SettingDB(this);
+        dread2 = SDB.getReadableDatabase();
+        set = new Setting();
+        inittheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinfo);
         checkPermission();
@@ -274,8 +280,10 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(contents[position]);
+
         Log.d("my","qwe");
         final EditText input = new EditText(this);
+        input.setTextColor(R.attr.colorPrimary);
         builder.setView(input);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
@@ -377,5 +385,37 @@ public class Myinfo extends AppCompatActivity implements AdapterView.OnItemClick
             return layout;
         }
 
+    }
+
+    public void inittheme() {
+        Cursor cursor = dread2.query("Setting", null, null, null, null,null, null);
+
+        cursor.moveToNext();
+        set.setTheme(cursor.getInt(cursor.getColumnIndex("theme")));
+        switch (set.getTheme())
+        {
+            case 0:
+                setTheme(R.style.GreenAppTheme);
+                break;
+            case 1:
+                setTheme(R.style.BlueAppTheme);
+                break;
+            case 2:
+                setTheme(R.style.PurpleAppTheme);
+                break;
+            case 3:
+                setTheme(R.style.BronzeAppTheme);
+                break;
+            case 4:
+                setTheme(R.style.PinkAppTheme);
+                break;
+            case 5:
+                setTheme(R.style.OrAppTheme);
+                break;
+
+            default:
+                break;
+        }
+        cursor.close();
     }
 }

@@ -45,13 +45,14 @@
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/home_listview_logo"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
     <TextView
         android:id="@+id/account1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
-        android:text="43324fdsdc"
+        android:text="1"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textStyle="bold"

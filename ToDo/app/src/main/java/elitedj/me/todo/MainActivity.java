@@ -40,21 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DB = new SettingDB(this);
         dbread = DB.getReadableDatabase();
         set = new Setting();
-//        ContentValues values = new ContentValues();
-//        values.put("_id",1);
-//        values.put("theme",1);
-//        values.put("lszd",1);
-//        values.put("music","sdsad");
-//        values.put("resttime","5分钟");
-//        values.put("geyan","ALL IS WELL");
-//        values.put("xianshi",1);
-//        values.put("changliang",2);
-//        values.put("break_time","3分钟");
-//        values.put("break_cnt",5);
-//        values.put("language",1);
-//        String sql= "INSERT INTO Setting (_id, theme,lszd,music,resttime,geyan,xianshi,changliang,break_time,break_cnt,language) VALUES(1,1,1,'asd','5分钟','ALL IS WELL',1,0,'3分钟',5,1)";
-//
-//        dbread.execSQL(sql);
+        Cursor cursor = dbread.query("Setting", null, null, null, null,null, null);
+        int count = cursor.getCount();
+        if(count==0)
+        {
+            createsetting();
+        }
+        cursor.close();
 
         inittheme();
 
@@ -156,6 +148,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         cursor.close();
+    }
+
+    private void createsetting()
+    {
+        ContentValues values = new ContentValues();
+        values.put("_id",1);
+        values.put("theme",1);
+        values.put("lszd",1);
+        values.put("music","sdsad");
+        values.put("resttime","5分钟");
+        values.put("geyan","ALL IS WELL");
+        values.put("xianshi",1);
+        values.put("changliang",2);
+        values.put("break_time","3分钟");
+        values.put("break_cnt",5);
+        values.put("language",1);
+        String sql= "INSERT INTO Setting (_id, theme,lszd,music,resttime,geyan,xianshi,changliang,break_time,break_cnt,language) VALUES(1,1,1,'asd','5分钟','ALL IS WELL',1,0,'3分钟',5,1)";
+
+        dbread.execSQL(sql);
     }
 
 }

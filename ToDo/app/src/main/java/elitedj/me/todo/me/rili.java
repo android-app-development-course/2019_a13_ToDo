@@ -36,8 +36,8 @@ public class rili extends AppCompatActivity {
     private String[] end_time = {};
     private String[] names3 = {"唱跳rap", "打篮球"};
     private String[] contents3 = {"点击编写心得", "李涛崴脚了"};
-    private String[] names1 = {"学习安卓", "打篮球"};
-    private String[] contents1 = {"安卓使我快乐", "打爆李涛了"};
+    private String[] names1 = {"学习数据库", "学习编译原理"};
+    private String[] contents1 = {"数据库真有趣", "编译原理太南了"};
     private String[] start_time3 = {"15 : 30", "17 : 00"};
     private String[] end_time3 = {"15 : 50", "18 : 00"};
     private String[] start_time1 = {" 9: 30", "16 : 00"};
